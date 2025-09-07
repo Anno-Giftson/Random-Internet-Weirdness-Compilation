@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Random Internet Weirdness Compilation — Extended Edition</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background-color: #fffbe7;
+      color: #222;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.4;
+    }
+    h1, h2, h3 {
+      text-align: center;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+    }
+    .button {
+      display: inline-block;
+      background-color: #222;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin: 10px 0 15px 0;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #444;
+    }
+    .hidden-message {
+      color: white;
+      user-select: text;
+      background-color: #222;
+      padding: 5px 8px;
+      border-radius: 4px;
+      margin: 15px 0;
+      display: inline-block;
+    }
+    .ascii {
+      font-family: monospace;
+      white-space: pre;
+      color: #4caf50;
+      margin: 20px 0;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 6px;
+    }
+    .popup {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fffa;
+      padding: 20px;
+      border: 2px dashed #222;
+      display: none;
+      z-index: 9999;
+      max-width: 300px;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+    footer {
+      margin-top: 80px;
+      font-size: 0.9rem;
+      color: #999;
+      text-align: center;
+      user-select: none;
+    }
+    .page-break {
+      border-top: 3px dashed #222;
+      margin: 60px 0;
+    }
+    .scroll-warning {
+      color: red;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      font-size: 1.2rem;
+    }
+    .select-all-reveal {
+      color: white;
+      background: black;
+      user-select: all;
+      padding: 5px;
+      margin-top: 25px;
+      display: inline-block;
+      border-radius: 4px;
+      cursor: text;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌀 RANDOM INTERNET WEIRDNESS COMPILATION</h1>
+  <p><strong>Welcome, viewer.</strong> You are entering a document full of chaotic internet oddities. Buckle up.</p>
+
+  <section id="page1">
+    <div class="ascii">
+      [████████░░░░░░░░░░] 42% Loading Pure Chaos...
+    </div>
+
+    <button class="button" onclick="showPopup('You have clicked a button. This is your reward.')">🔘 Click for Nothing</button><br />
+    <button class="button" onclick="showPopup('Here is a quote: “If it looks stupid but works, it isn’t stupid.”')">📜 Wisdom Dump</button><br />
+    <button class="button" onclick="showPopup('404: Meaning Not Found. Try turning your brain off and on again.')">⚠️ ERROR SIMULATION</button>
+
+    <p>Random Fact #127: Bananas are slightly radioactive. So is this document.</p>
+
+    <div class="ascii">
+      System Diagnostic Boot v1.3.7<br />
+      &gt; Checking vibes... Vibes are immaculate<br />
+      &gt; Scanning brainwaves... Slightly weird<br />
+      &gt; Injecting sarcasm... Done ✅<br />
+      &gt; Proceed with caution
+    </div>
+
+    <h3>🤫 Hidden Message:</h3>
+    <p class="hidden-message">Congratulations. You found the secret text. You win: 0 internet points.</p>
+
+    <h3>👁️‍🗨️ Warning:</h3>
+    <p>Scrolling too far may result in contact with... the Void.</p>
+
+    <div style="height: 300px;"></div>
+
+    <div class="ascii">
+      You have reached the bottom.<br />
+      The truth is...<br />
+      <strong>There is no spoon. 🍴</strong>
+    </div>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section id="page2">
+    <h2>Page 2: The Meme Archive</h2>
+    <p>Welcome to the official archive of memes that never should have existed.</p>
+
+    <button class="button" onclick="showPopup('Why did the chicken cross the road? To get away from the memes!')">🐔 Classic Meme</button>
+    <button class="button" onclick="showPopup('This is fine. Everything is fine. 🔥')">🔥 This is Fine</button>
+    <button class="button" onclick="showPopup('I’m not a robot. I’m a toaster. 🤖')">🤖 Toaster Mode</button>
+
+    <div class="ascii">
+      (╯°□°）╯︵ ┻━┻<br />
+      The infamous table flip
+    </div>
+
+    <p>Ever wondered why cats are so internet famous? Neither have we.</p>
+
+    <h3>🤫 Secret Meme Code:</h3>
+    <p class="hidden-message">¯\_(ツ)_/¯</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section id="page3">
+    <h2>Page 3: The Random Quote Machine</h2>
+    <button class="button" onclick="showPopup(randomQuote())">🎲 Get Random Quote</button>
+
+    <p>Quotes generated by the Random Internet Weirdness Compilation AI (totally real, obviously):</p>
+
+    <ul>
+      <li>“Why write clean code when you can write mysterious?”</li>
+      <li>“404: Motivation Not Found”</li>
+      <li>“Ctrl + Alt + Del your problems.”</li>
+      <li>“There’s no place like 127.0.0.1”</li>
+      <li>“Keep calm and blame the compiler.”</li>
+    </ul>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section id="page4">
+    <h2>Page 4: Legal Disclaimer of Doom</h2>
+    <p><em>This document is a work of pure fiction. Any resemblance to real chaos is purely coincidental.</em></p>
+    <p>By reading this, you accept all responsibility for any laughter, confusion, or spontaneous keyboard smashing.</p>
+
+    <button class="button" onclick="showPopup('You waived your rights to sanity upon entering this document.')">Acknowledge</button>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section id="page5">
+    <h2>Page 5: Glossary of Gibberish</h2>
+    <dl>
+      <dt><strong>Blorp</strong></dt>
+      <dd>The sound your brain makes when reading this.</dd>
+      <dt><strong>Wizzlewump</strong></dt>
+      <dd>A technical term for an unexpected bug that fixes itself.</dd>
+      <dt><strong>Snorfle</strong></dt>
+      <dd>A laugh that sounds like a snort and a chuckle combined.</dd>
+    </dl>
+
+    <button class="button" onclick="showPopup('You just invented a new word! Congrats!')">Create Word</button>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section id="page6">
+    <h2>Page 6: Easter Egg Hunt</h2>
+    <p>Try selecting this text to see what happens:</p>
+    <p class="select-all-reveal" onclick="alert('You found the hidden egg! 🥚 Congrats, internet explorer!')">
+      Select all this text (Ctrl + A or Cmd + A)
+    </p>
+
+    <p>More hidden messages are scattered throughout — keep your eyes peeled!</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section id="page7">
+    <h2>Page 7: The AI Gets Weird</h2>
+    <p>Loading AI responses...</p>
+    <button class="button" onclick="showPopup(fakeAIResponse())">Ask AI</button>
+
+    <div class="ascii">
+      &gt; AI Boot Sequence<br />
+      &gt; Initializing weirdness protocol... ✅<br />
+      &gt; Engaging sarcasm module... ✅<br />
+      &gt; Overload imminent! 🚨
+    </div>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section id="page8">
+    <h2>Page 8: Random ASCII Art</h2>
+    <pre class="ascii">
+  (\_/)
+  ( •_•)
+  /&gt;🍪   Here’s a cookie for making it this far.
+    </pre>
+    <pre class="ascii">
+  ──────▄▀▀▀▀▀▀▀▀▀▀▀▄──────
+  ───▄▀▀░░░░░░░░░░░░░░▀▄────
+  ─▄▀░░░░░░░░░░░░░░░░░░░▀▄──
+  ─█░░█░░█░░░░░░░░█░░█░░█──
+  ─▀▄░▀▄░▀▄░▄▀░▄▀░▀▄░▀▄░▀▄──
+  ───▀▄░░▀▄▀▄▀▄▀▄▀░░▄▀─────
+    </pre>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section id="page9">
+    <h2>Page 9: Contact The Void</h2>
+    <p><strong>Warning:</strong> Contacting the Void may have unpredictable results.</p>
+    <button class="button" onclick="showPopup('You tried contacting the Void. The Void is silent.')">Contact The Void</button>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section id="page10">
+    <h2>Page 10: Final Words</h2>
+    <p>If you’ve made it this far, congratulations! You survived the Random Internet Weirdness Compilation.</p>
+    <p>Remember: <em>There is no spoon.</em> <br /> And definitely no refunds.</p>
+    <button class="button" onclick="showPopup('Thanks for visiting! Come back soon. 👾')">Farewell</button>
+  </section>
+
+  <footer>
+    Created by ChatGPT. Prompted by Anno Giftson.<br />
+    Best viewed on a toaster.
+  </footer>
+
+  <div class="popup" id="popup"></div>
+
+  <script>
+    function showPopup(text) {
+      const popup = document.getElementById('popup');
+      popup.innerText = text;
+      popup.style.display = 'block';
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 4000);
+    }
+
+    function randomQuote() {
+      const quotes = [
+        "Why write clean code when you can write mysterious?",
+        "404: Motivation Not Found",
+        "Ctrl + Alt + Del your problems.",
+        "There's no place like 127.0.0.1",
+        "Keep calm and blame the compiler."
+      ];
+      return quotes[Math.floor(Math.random() * quotes.length)];
+    }
+
+    function fakeAIResponse() {
+      const responses = [
+        "I'm sorry, Dave. I'm afraid I can't do that.",
+        "Error 0xDEADBEEF: Sarcasm module overloaded.",
+        "Beep boop. I'm a toaster, not your assistant.",
+        "Loading existential crisis... please wait.",
+        "All your base are belong to us."
+      ];
+      return responses[Math.floor(Math.random() * responses.length)];
+    }
+  </script>
+</body>
+</html>
