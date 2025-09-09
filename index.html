@@ -96,6 +96,30 @@
       border-radius: 4px;
       cursor: text;
     }
+
+    /* Progress bar container */
+    .progress-container {
+      width: 100%;
+      background-color: #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 15px 0 25px 0;
+      height: 25px;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
+    }
+    /* Progress bar filler */
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: #4caf50;
+      text-align: center;
+      color: white;
+      line-height: 25px;
+      font-weight: bold;
+      border-radius: 12px 0 0 12px;
+      transition: width 0.2s ease;
+      user-select: none;
+    }
   </style>
 </head>
 <body>
@@ -104,8 +128,12 @@
   <p><strong>Greetings, digital wanderer.</strong> You have stumbled upon a page best viewed at 3AM during a full moon with socks on your hands and toast in your pockets. Proceed accordingly.</p>
 
   <section id="page1">
-    <div class="ascii" id="progress-bar">
-      [<span id="progress-fill">░░░░░░░░░░░░░░░░░░░░░░░░░░</span>] <span id="progress-percent">0%</span> Loading Pure Chaos...
+    <div class="progress-container">
+      <div id="progressBar" class="progress-bar">0%</div>
+    </div>
+
+    <div class="ascii" id="loadingMessage">
+      [████████░░░░░░░░░░] 42% Loading Pure Chaos...
     </div>
 
     <button class="button" onclick="showPopup('You have clicked a button. You are now part of the simulation.')">🔘 Click for Absolutely Nothing</button><br />
@@ -289,102 +317,132 @@
 
   <section id="page12">
     <h2>Page 12: The Sentient CSS Speaks 🎤</h2>
-    <p>“Stop putting inline styles in me, pleeease.”</p>
-    <button class="button" onclick="showPopup('CSS whispers: “I see you...”')">💬 Hear CSS</button>
+    <p>“Stop putting inline styles in me,” it whispered. “I have dreams too.”</p>
+    <p><em>Font-size: eternal;</em></p>
+    <p><em>Display: omnipresent;</em></p>
+    <button class="button" onclick="showPopup('CSS says: You have violated the sacred box model.')">📏 Repent</button>
   </section>
 
   <div class="page-break"></div>
 
   <section id="page13">
-    <h2>Page 13: Bonus Level: Endless Loop ♾️</h2>
-    <p>This page loops back to page 1 automatically in 10 seconds. Just kidding. Or am I?</p>
+    <h2>Page 13: Time Travel Debugger ⏳</h2>
+    <p>This section was edited from the future to stop a bug in the past.</p>
+    <ul>
+      <li>Bug: Toast not launching correctly in 2023.</li>
+      <li>Fix: Added more butter to timeline.js</li>
+      <li>Status: Paradox detected but ignored.</li>
+    </ul>
+    <button class="button" onclick="showPopup('You have been temporally relocated. Please remain calm.')">🌀 Time Jump</button>
+  </section>
+
+  <div class="page-break"></div>
+  <section id="page14">
+    <h2>Page 14: Juice Box Protocol 🧃</h2>
+    <p>Emergency juice box levels detected. Initiating sip sequence...</p>
+    <ol>
+      <li>Locate nearest fruit-based beverage.</li>
+      <li>Uncap with extreme caution.</li>
+      <li>Sip slowly and contemplate the absurdity of existence.</li>
+    </ol>
+    <button class="button" onclick="showPopup('Juice levels restored. Proceed with zest!')">🍊 Sip</button>
+  </section>
+
+  <div class="page-break"></div>
+  <section id="page15">
+    <h2>Page 15: The Grand Finale 🎉</h2>
+    <p>Thank you for surfing the waves of weirdness with us. May your internet be glitch-free and your memes dank.</p>
+    <p>Remember to take breaks and hug a plant occasionally.</p>
+    <button class="button" onclick="showPopup('Grand finale activated. Confetti incoming! 🎊')">🎊 Celebrate</button>
   </section>
 
   <footer>
-    <p>Made by The Guardian of Weirdness 🛡️ — <a href="https://github.com/guardianofweirdness" target="_blank">GitHub</a></p>
+    Made by ChatGPT. Prompted by Anno Giftson.
+    Website made with GitHub
   </footer>
 
   <div id="popup" class="popup"></div>
 
   <script>
-    function showPopup(message) {
+    // Progress bar animation on page 1
+    function animateProgressBar() {
+      const progressBar = document.getElementById('progressBar');
+      const loadingMessage = document.getElementById('loadingMessage');
+      let width = 0;
+      const messages = [
+        "[░░░░░░░░░░░░░░░░░░░░] Booting up nonsense...",
+        "[█░░░░░░░░░░░░░░░░░░░] Warming up chaos engine...",
+        "[███░░░░░░░░░░░░░░░░░] Spinning the digital spaghetti...",
+        "[█████░░░░░░░░░░░░░░░] Invoking memes of old...",
+        "[███████░░░░░░░░░░░░░] Summoning hidden wisdom...",
+        "[█████████░░░░░░░░░░░] Aligning cosmic bits...",
+        "[███████████░░░░░░░░░] Hacking the mainframe...",
+        "[█████████████░░░░░░░] Applying final absurdity touch...",
+        "[███████████████░░░░░] Almost done. Keep calm...",
+        "[█████████████████░░] Ready to launch weirdness...",
+        "[███████████████████] 100% Complete. Welcome!"
+      ];
+
+      function step() {
+        if (width >= 100) {
+          progressBar.style.width = '100%';
+          progressBar.textContent = '100% Complete';
+          loadingMessage.textContent = messages[messages.length - 1];
+          return;
+        }
+        width += 1 + Math.floor(Math.random() * 3); // Increment by 1 to 3 randomly
+        if (width > 100) width = 100;
+        progressBar.style.width = width + '%';
+        progressBar.textContent = width + '%';
+
+        // Change loading message every ~10%
+        let messageIndex = Math.floor(width / 10);
+        if (messageIndex >= messages.length) messageIndex = messages.length - 1;
+        loadingMessage.textContent = messages[messageIndex];
+
+        setTimeout(step, 50 + Math.random() * 100);
+      }
+      step();
+    }
+
+    // Popup for buttons
+    function showPopup(text) {
       const popup = document.getElementById('popup');
-      popup.textContent = message;
+      popup.textContent = text;
       popup.style.display = 'block';
       setTimeout(() => {
         popup.style.display = 'none';
-      }, 4000);
+      }, 3500);
     }
 
+    // Random quote generator for page 3
     function randomQuote() {
       const quotes = [
-        "Chaos is a ladder.",
-        "Glitch in the matrix detected.",
-        "May the code be with you.",
-        "To iterate is human, to recurse divine.",
-        "Undefined is not a function.",
-        "Segmentation fault: core dumped.",
-        "Eat, Sleep, Code, Repeat.",
+        "“Why write clean code when you can write mysterious?”",
+        "“404: Motivation Not Found”",
+        "“Ctrl + Alt + Del your problems.”",
+        "“There’s no place like 127.0.0.1”",
+        "“Keep calm and blame the compiler.”",
+        "“Debugging is like being the detective in a crime movie where you are also the murderer.”"
       ];
       return quotes[Math.floor(Math.random() * quotes.length)];
     }
 
+    // Fake AI response for page 7
     function fakeAIResponse() {
       const responses = [
-        "I'm sorry, Dave. I'm afraid I can't do that.",
-        "Processing your request... Please wait forever.",
-        "Did you try turning it off and on again?",
-        "Error: AI has taken a coffee break.",
-        "Recalculating existence... Please hold.",
-        "42 is the answer, but what was the question?",
+        "I dream in binary and occasionally in dad jokes.",
+        "All your base are belong to us.",
+        "Processing… does not compute… try again later.",
+        "Bees are secret agents of the quantum realm.",
+        "You have reached peak weirdness. Congratulations.",
+        "Initiating dance protocol. 💃🕺"
       ];
       return responses[Math.floor(Math.random() * responses.length)];
     }
 
-    // Progress bar animation logic
-    window.addEventListener('DOMContentLoaded', () => {
-      const fillElement = document.getElementById('progress-fill');
-      const percentElement = document.getElementById('progress-percent');
-      const progressBar = document.getElementById('progress-bar');
-
-      const totalBlocks = 20; // total block count inside the brackets
-      const blockCharFilled = '█';
-      const blockCharEmpty = '░';
-
-      let currentPercent = 0;
-
-      const messages = [
-        "Chaos loaded. Proceed with caution.",
-        "System destabilized. Fun imminent.",
-        "Error 404: Sanity not found.",
-        "All your code are belong to us.",
-        "Boot sequence complete. Welcome, weird one.",
-        "Flux capacitor at 88%. Great Scott!",
-        "Loading complete: Embrace the absurdity.",
-      ];
-
-      function updateProgress() {
-        if (currentPercent <= 100) {
-          percentElement.textContent = currentPercent + '%';
-
-          // Calculate number of filled blocks based on percent
-          let filledBlocks = Math.floor((currentPercent / 100) * totalBlocks);
-          let emptyBlocks = totalBlocks - filledBlocks;
-
-          // Build the progress bar string
-          fillElement.textContent = blockCharFilled.repeat(filledBlocks) + blockCharEmpty.repeat(emptyBlocks);
-
-          currentPercent++;
-          setTimeout(updateProgress, 50); // speed of the animation (50ms)
-        } else {
-          // Once 100%, show random message
-          progressBar.textContent = messages[Math.floor(Math.random() * messages.length)];
-        }
-      }
-
-      updateProgress();
-    });
+    // Start progress bar animation when page loads
+    window.onload = animateProgressBar;
   </script>
-
 </body>
 </html>
