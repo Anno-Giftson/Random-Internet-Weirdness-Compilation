@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,17 +9,19 @@
       font-family: 'Courier New', monospace;
       background-color: #fffbe7;
       color: #222;
-      padding: 2rem 4rem 2rem 5rem; /* left padding for vertical progress bar */
+      padding: 2rem 4rem 2rem 5rem;
       max-width: 900px;
       margin: auto;
       line-height: 1.4;
       position: relative;
     }
+
     h1, h2, h3 {
       text-align: center;
       margin-top: 3rem;
       margin-bottom: 1rem;
     }
+
     .button {
       display: inline-block;
       background-color: #222;
@@ -32,9 +34,11 @@
       user-select: none;
       transition: background-color 0.3s ease;
     }
+
     .button:hover {
       background-color: #444;
     }
+
     .hidden-message {
       color: white;
       user-select: text;
@@ -44,6 +48,7 @@
       margin: 15px 0;
       display: inline-block;
     }
+
     .ascii {
       font-family: monospace;
       white-space: pre;
@@ -53,6 +58,7 @@
       padding: 10px;
       border-radius: 6px;
     }
+
     .popup {
       position: fixed;
       top: 20%;
@@ -68,6 +74,7 @@
       font-weight: bold;
       border-radius: 10px;
     }
+
     footer {
       margin-top: 80px;
       font-size: 0.9rem;
@@ -75,10 +82,12 @@
       text-align: center;
       user-select: none;
     }
+
     .page-break {
       border-top: 3px dashed #222;
       margin: 60px 0;
     }
+
     .scroll-warning {
       color: red;
       font-weight: bold;
@@ -87,6 +96,7 @@
       margin-bottom: 30px;
       font-size: 1.2rem;
     }
+
     .select-all-reveal {
       color: white;
       background: black;
@@ -98,7 +108,6 @@
       cursor: text;
     }
 
-    /* Vertical Progress bar container - fixed on left */
     .progress-container {
       position: fixed;
       top: 0;
@@ -111,7 +120,7 @@
       box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
       z-index: 10000;
     }
-    /* Progress bar filler vertical */
+
     .progress-bar {
       height: 0%;
       width: 100%;
@@ -129,7 +138,6 @@
       padding-top: 5px;
       box-sizing: border-box;
     }
-
   </style>
 </head>
 <body>
@@ -141,179 +149,41 @@
   <h1>🌀 RANDOM INTERNET WEIRDNESS COMPILATION — ULTRA EXTENDED EDITION 🌀</h1>
   <p><strong>Greetings, digital wanderer.</strong> You have stumbled upon a page best viewed at 3AM during a full moon with socks on your hands and toast in your pockets. Proceed accordingly.</p>
 
-  <section id="page1">
+  <!-- Animated ASCII loading bar -->
+  <div class="ascii" id="loadingMessage">
+    [░░░░░░░░░░░░░░░░░░░░] 0% Loading Pure Chaos...
+  </div>
 
-    <div class="ascii" id="loadingMessage">
-      [████████░░░░░░░░░░] 42% Loading Pure Chaos...
-    </div>
+  <!-- Example content -->
+  <button class="button" onclick="showPopup('You have clicked a button. You are now part of the simulation.')">🔘 Click for Absolutely Nothing</button><br />
+  <button class="button" onclick="showPopup('Wisdom Level +1: “Never trust a code comment written in Comic Sans.”')">📜 Dump Some Wisdom</button><br />
+  <button class="button" onclick="showPopup('ERROR 500: Logic Overload. Unplug and replug your thoughts.')">⚠️ Simulated Error</button>
 
-    <button class="button" onclick="showPopup('You have clicked a button. You are now part of the simulation.')">🔘 Click for Absolutely Nothing</button><br />
-    <button class="button" onclick="showPopup('Wisdom Level +1: “Never trust a code comment written in Comic Sans.”')">📜 Dump Some Wisdom</button><br />
-    <button class="button" onclick="showPopup('ERROR 500: Logic Overload. Unplug and replug your thoughts.')">⚠️ Simulated Error</button>
+  <p>Random Fact #174: Cows have best friends and get stressed when separated. Also, same.</p>
 
-    <p>Random Fact #174: Cows have best friends and get stressed when separated. Also, same.</p>
+  <div class="ascii">
+    Boot Log v3.14.159:<br />
+    - Verifying quantum particles... Disagreeing<br />
+    - Checking reality layers... Peeling back<br />
+    - Reinitializing cosmic spaghetti... Done<br />
+    - Summoning mild absurdity... ✔️
+  </div>
 
-    <div class="ascii">
-      Boot Log v3.14.159:<br />
-      - Verifying quantum particles... Disagreeing<br />
-      - Checking reality layers... Peeling back<br />
-      - Reinitializing cosmic spaghetti... Done<br />
-      - Summoning mild absurdity... ✔️
-    </div>
+  <h3>🤫 Hidden Message:</h3>
+  <p class="hidden-message">You’ve unlocked nothing. But hey, good effort!</p>
 
-    <h3>🤫 Hidden Message:</h3>
-    <p class="hidden-message">You’ve unlocked nothing. But hey, good effort!</p>
+  <h3>👁️‍🗨️ Warning:</h3>
+  <p class="scroll-warning">WARNING: Scrolling further may lead to unexpected philosophical discomfort or mild giggles.</p>
 
-    <h3>👁️‍🗨️ Warning:</h3>
-    <p class="scroll-warning">WARNING: Scrolling further may lead to unexpected philosophical discomfort or mild giggles.</p>
+  <div style="height: 600px;"></div>
 
-    <div style="height: 400px;"></div>
-
-    <div class="ascii">
-      You have reached a checkpoint.<br />
-      Save your progress by screaming into a mason jar. 🫙<br />
-      Proceed with chaos.
-    </div>
-  </section>
-
-  <div class="page-break"></div>
-  <section id="page2">
-    <h2>Page 2: The Meme Archive 📂</h2>
-    <p>Welcome to the official vault of memes that legally should not exist but do anyway.</p>
-
-    <button class="button" onclick="showPopup('Why did the chicken cross the road? Because the AI told it to.')">🐔 Classic Meme</button>
-    <button class="button" onclick="showPopup('This is fine. Everything is fine. The printer is on fire.')">🔥 This is Fine</button>
-    <button class="button" onclick="showPopup('I am a toaster. I do not dream of electric sheep. Only crumbs.')">🤖 Activate Toaster Mode</button>
-
-    <div class="ascii">
-      (╯°□°）╯︵ ┻━┻<br />
-      // Table has been flipped. Contact IT support immediately.
-    </div>
-
-    <p>Fun Fact: The average cat can access more Wi-Fi networks than your grandma.</p>
-
-    <h3>🤫 Secret Meme Code:</h3>
-    <p class="hidden-message">Insert coin to continue: ¯\\_(ツ)_/¯</p>
-  </section>
+  <div class="ascii">
+    You have reached a checkpoint.<br />
+    Save your progress by screaming into a mason jar. 🫙<br />
+    Proceed with chaos.
+  </div>
 
   <div class="page-break"></div>
-
-  <section id="page3">
-    <h2>Page 3: The Random Quote Machine 🎰</h2>
-    <button class="button" onclick="showPopup(randomQuote())">🎲 Dispense Internet Wisdom</button>
-
-    <p>Quotes generated by a rogue AI trapped in a vending machine in 2008:</p>
-
-    <ul>
-      <li>“Why write clean code when you can write mysterious?”</li>
-      <li>“404: Motivation Not Found”</li>
-      <li>“Ctrl + Alt + Del your problems.”</li>
-      <li>“There’s no place like 127.0.0.1”</li>
-      <li>“Keep calm and blame the compiler.”</li>
-      <li>“Debugging is like being the detective in a crime movie where you are also the murderer.”</li>
-    </ul>
-  </section>
-
-  <div class="page-break"></div>
-
-  <section id="page4">
-    <h2>Page 4: Legal Disclaimer of Doom ☠️</h2>
-    <p><em>This document is entirely fictional. Except the weird parts. Those are real. Maybe. You decide.</em></p>
-    <p>By continuing to read, you waive your rights to complain about absurdity, odd fonts, or sudden existential revelations.</p>
-
-    <button class="button" onclick="showPopup('You have acknowledged the weird. There is no turning back.')">☑️ I Agree</button>
-  </section>
-
-  <div class="page-break"></div>
-
-  <section id="page5">
-    <h2>Page 5: Glossary of Gibberish 📚</h2>
-    <dl>
-      <dt><strong>Blorp</strong></dt>
-      <dd>The noise your brain makes when you've read too much nonsense. Like now.</dd>
-
-      <dt><strong>Wizzlewump</strong></dt>
-      <dd>An elusive bug that appears only when someone is watching you debug.</dd>
-
-      <dt><strong>Snorfle</strong></dt>
-      <dd>A highly inefficient yet oddly satisfying combination of snort and chuckle.</dd>
-
-      <dt><strong>Yeetergy</strong></dt>
-      <dd>The raw chaotic energy required to commit to the bit, no matter how weird.</dd>
-
-      <dt><strong>Chrono-napping</strong></dt>
-      <dd>The act of falling asleep at 2PM and waking up in 1843.</dd>
-    </dl>
-
-    <button class="button" onclick="showPopup('Congratulations, you are now a certified word wizard.')">✨ Generate Gibberish</button>
-  </section>
-
-  <div class="page-break"></div>
-  <section id="page6">
-    <h2>Page 6: Easter Egg Hunt 🥚</h2>
-    <p>Try selecting this text to reveal a secret:</p>
-    <p class="select-all-reveal" onclick="alert('You unlocked the Obscure Egg of Slight Confusion™')">
-      Select all this text (Ctrl + A or Cmd + A)
-    </p>
-
-    <p>Hint: Some secrets are only visible on full moons. Or in the browser inspector.</p>
-  </section>
-
-  <div class="page-break"></div>
-
-  <section id="page7">
-    <h2>Page 7: The AI Gets Weird 🤖</h2>
-    <p>Asking the AI a question… please stand by for cryptic nonsense:</p>
-    <button class="button" onclick="showPopup(fakeAIResponse())">🧠 Ask the AI Oracle</button>
-
-    <div class="ascii">
-      &gt; Booting AI core...<br />
-      &gt; Loading curiosity.exe... ✅<br />
-      &gt; Overthinking enabled... ✅<br />
-      &gt; Thinking about bees... 🐝... stuck...
-    </div>
-  </section>
-
-  <div class="page-break"></div>
-
-  <section id="page8">
-    <h2>Page 8: Random ASCII Art 🎨</h2>
-    <pre class="ascii">
-(\__/)
-( •_•)
-/>🍪   Accept this cookie of gratitude.
-    </pre>
-    <pre class="ascii">
-  ──────▄▀▀▀▀▀▀▀▀▀▀▀▄──────
-  ───▄▀▀░░░░░░░░░░░░░░▀▄────
-  ─▄▀░░░░░░░░░░░░░░░░░░░▀▄──
-  ─█░░█░░░░░░░░░░░░░░░░░░░█──
-  ─█░░░▀▄░░░░░░░░░░░░░░░░░█──
-  ─█░░░░░▀▄░░░░░░░░░░░░░░░█──
-  ─█░░░░░░░▀▄░░░░░░░░░░░░░█──
-  ─█░░░░░░░░░▀▄░░░░░░░░░░░█──
-  ─█░░░░░░░░░░░▀▄░░░░░░░░░█──
-  ─▀▄░░░░░░░░░░░░▀▄░░░░░░░█──
-  ──▀▄░░░░░░░░░░░░░▀▄░░░░░█──
-  ───▀▄░░░░░░░░░░░░░░▀▄░░░█──
-  ─────▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▀▀▀──
-    </pre>
-  </section>
-
-  <div class="page-break"></div>
-
-  <!-- Add more pages up to page 20, keeping the last words on page 20 -->
-
-  <!-- Skipping pages 9 to 19 for brevity, but you should add them similarly -->
-
-  <section id="page20">
-    <h2>Page 20: The Real Final Words 📜</h2>
-    <p>Congratulations! You have reached the actual last page.</p>
-    <p>Thank you for journeying through this bizarre compilation of internet oddities, random facts, and silly nonsense.</p>
-    <p>Remember: in the vast web of data, sometimes the weirdest pages hold the greatest charm.</p>
-
-    <button class="button" onclick="showPopup('You reached the end! Go make something weird yourself.')">🌟 Final Message</button>
-  </section>
 
   <footer>
     Website made with GitHub
@@ -322,7 +192,6 @@
   <div id="popup" class="popup" role="alert" aria-live="assertive"></div>
 
   <script>
-    // Popup show/hide
     function showPopup(message) {
       const popup = document.getElementById('popup');
       popup.textContent = message;
@@ -332,7 +201,6 @@
       }, 3500);
     }
 
-    // Random quote generator for Page 3 button
     function randomQuote() {
       const quotes = [
         "Why write clean code when you can write mysterious?",
@@ -345,7 +213,6 @@
       return quotes[Math.floor(Math.random() * quotes.length)];
     }
 
-    // Fake AI oracle responses for Page 7 button
     function fakeAIResponse() {
       const responses = [
         "The meaning of life is 42... but also pie.",
@@ -357,7 +224,7 @@
       return responses[Math.floor(Math.random() * responses.length)];
     }
 
-    // Update vertical progress bar on scroll
+    // Vertical progress bar scroll handler
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -371,8 +238,27 @@
       progressBar.setAttribute('aria-valuenow', Math.floor(scrollPercent));
     });
 
+    // Animate ASCII loading bar on page load
+    function animateAsciiLoading() {
+      const loadingEl = document.getElementById('loadingMessage');
+      let percent = 0;
+      const totalBlocks = 20;
+      const interval = setInterval(() => {
+        percent++;
+        const filledBlocks = Math.floor((percent / 100) * totalBlocks);
+        const emptyBlocks = totalBlocks - filledBlocks;
+        const bar = '[' + '█'.repeat(filledBlocks) + '░'.repeat(emptyBlocks) + `] ${percent}% Loading Pure Chaos...`;
+        loadingEl.textContent = bar;
+        if (percent >= 100) {
+          clearInterval(interval);
+        }
+      }, 35); // Total duration ≈ 3.5s
+    }
+
+    window.addEventListener('DOMContentLoaded', animateAsciiLoading);
   </script>
 
 </body>
 </html>
+
 
