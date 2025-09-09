@@ -3,355 +3,362 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Random Internet Weirdness Compilation — Extended Edition</title>
+  <title>Anno Giftson's Epic Page Collection</title>
   <style>
+    /* Basic styling and dark mode */
     body {
-      font-family: 'Courier New', monospace;
-      background-color: #fffbe7;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #fff;
       color: #222;
-      padding: 2rem 4rem 2rem 5rem;
-      max-width: 900px;
-      margin: auto;
-      line-height: 1.4;
-      position: relative;
+      transition: background-color 0.5s, color 0.5s;
     }
-    h1, h2, h3 {
+    footer {
+      margin-top: 50px;
       text-align: center;
-      margin-top: 3rem;
-      margin-bottom: 1rem;
+      font-size: 0.9em;
+      color: #666;
     }
-    .button {
-      display: inline-block;
-      background-color: #222;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      margin: 10px 0 15px 0;
-      cursor: pointer;
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-    .button:hover {
-      background-color: #444;
-    }
-    .hidden-message {
-      color: white;
-      user-select: text;
-      background-color: #222;
-      padding: 5px 8px;
-      border-radius: 4px;
-      margin: 15px 0;
-      display: inline-block;
+    .page-break {
+      height: 40px;
     }
     .ascii {
       font-family: monospace;
       white-space: pre;
-      color: #4caf50;
       margin: 20px 0;
-      background: #f0f0f0;
-      padding: 10px;
-      border-radius: 6px;
-    }
-    .popup {
-      position: fixed;
-      top: 20%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #fffa;
-      padding: 20px;
-      border: 2px dashed #222;
-      display: none;
-      z-index: 9999;
-      max-width: 300px;
-      text-align: center;
-      font-weight: bold;
-      border-radius: 10px;
-    }
-    footer {
-      margin-top: 80px;
-      font-size: 0.9rem;
-      color: #999;
-      text-align: center;
-      user-select: none;
-    }
-    .page-break {
-      border-top: 3px dashed #222;
-      margin: 60px 0;
     }
     .scroll-warning {
-      color: red;
+      color: #b22222;
       font-weight: bold;
-      text-align: center;
-      margin-top: 30px;
-      margin-bottom: 30px;
-      font-size: 1.2rem;
+    }
+    .hidden-message {
+      user-select: text;
+      opacity: 0.1;
+      cursor: pointer;
+      font-style: italic;
+      font-size: 0.85em;
+      margin-top: 10px;
+      transition: opacity 0.3s ease;
+    }
+    .hidden-message:hover {
+      opacity: 0.8;
     }
     .select-all-reveal {
-      color: white;
-      background: black;
       user-select: all;
-      padding: 5px;
-      margin-top: 25px;
-      display: inline-block;
-      border-radius: 4px;
       cursor: text;
-    }
-    .progress-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 30px;
-      height: 100vh;
-      background-color: #ddd;
-      border-radius: 0 12px 12px 0;
-      overflow: hidden;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
-      z-index: 10000;
-    }
-    .progress-bar {
-      height: 0%;
-      width: 100%;
-      background-color: #4caf50;
-      text-align: center;
-      color: white;
-      line-height: 25px;
       font-weight: bold;
-      border-radius: 0 12px 12px 0;
-      transition: height 0.2s ease;
-      user-select: none;
-      writing-mode: vertical‑rl;
-      transform: rotate(180deg);
-      font-size: 12px;
-      padding-top: 5px;
-      box-sizing: border-box;
+      color: #444;
+    }
+    button {
+      background-color: #4CAF50;
+      border: none;
+      padding: 10px 18px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #121212;
+      color: #eeeeee;
+    }
+    body.dark-mode footer {
+      color: #aaaaaa;
+    }
+    body.dark-mode button {
+      background-color: #bb86fc;
+      color: #121212;
+    }
+    body.dark-mode button:hover {
+      background-color: #9b68d7;
+    }
+
+    /* Glitch effect */
+    @keyframes glitch {
+      0% {
+        clip: rect(0, 9999px, 0, 0);
+        transform: translate(0);
+      }
+      20% {
+        clip: rect(10px, 9999px, 50px, 0);
+        transform: translate(-5px, -5px);
+      }
+      40% {
+        clip: rect(20px, 9999px, 60px, 0);
+        transform: translate(5px, 5px);
+      }
+      60% {
+        clip: rect(0, 9999px, 70px, 0);
+        transform: translate(-5px, 5px);
+      }
+      80% {
+        clip: rect(10px, 9999px, 50px, 0);
+        transform: translate(5px, -5px);
+      }
+      100% {
+        clip: rect(0, 9999px, 0, 0);
+        transform: translate(0);
+      }
+    }
+    .glitch {
+      animation: glitch 0.3s infinite;
+      color: #ff00c8;
+      text-shadow:
+        2px 0 #00fff9,
+        -2px 0 #ff00c8;
     }
   </style>
 </head>
 <body>
 
-  <div class="progress-container" aria-label="Page scroll progress">
-    <div id="progressBar" class="progress-bar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">0%</div>
-  </div>
-
-  <h1>🌀 RANDOM INTERNET WEIRDNESS COMPILATION — ULTRA EXTENDED EDITION 🌀</h1>
-  <p><strong>Greetings, digital wanderer.</strong> You have stumbled upon a page best viewed at 3 AM during a full moon with socks on your hands and toast in your pockets. Proceed accordingly.</p>
-
-  <div class="ascii" id="loadingMessage">
-    [░░░░░░░░░░░░░░░░░░░░] 0% Loading Pure Chaos...
-  </div>
-
-  <!-- Page 1 content -->
+  <!-- Page 1 -->
   <section id="page1">
-    <!-- (Your original Page 1 content here) -->
-    <button class="button" onclick="showPopup('You have clicked a button. You are now part of the simulation.')">🔘 Click for Absolutely Nothing</button><br />
-    <button class="button" onclick="showPopup('Wisdom Level +1: “Never trust a code comment written in Comic Sans.”')">📜 Dump Some Wisdom</button><br />
-    <button class="button" onclick="showPopup('ERROR 500: Logic Overload. Unplug and replug your thoughts.')">⚠️ Simulated Error</button>
-    <p>Random Fact #174: Cows have best friends and get stressed when separated. Also, same.</p>
-    <div class="ascii">
-      Boot Log v3.14.159:<br />
-      - Verifying quantum particles... Disagreeing<br />
-      - Checking reality layers... Peeling back<br />
-      - Reinitializing cosmic spaghetti... Done<br />
-      - Summoning mild absurdity... ✔️
-    </div>
-    <h3>🤫 Hidden Message:</h3>
-    <p class="hidden-message">You’ve unlocked nothing. But hey, good effort!</p>
-    <h3>👁️‍🗨️ Warning:</h3>
-    <p class="scroll-warning">WARNING: Scrolling further may lead to unexpected philosophical discomfort or mild giggles.</p>
-    <div style="height: 400px;"></div>
-    <div class="ascii">
-      You have reached a checkpoint.<br />
-      Save your progress by screaming into a mason jar. 🫙<br />
-      Proceed with chaos.
-    </div>
+    <h2>Page 1: Welcome</h2>
+    <p>Welcome to the epic journey through pages 1 to 25! Buckle up.</p>
   </section>
+
+  <div class="page-break"></div>
 
   <!-- Page 2 -->
-  <div class="page-break"></div>
   <section id="page2">
-    <h2>Page 2: The Meme Archive 📂</h2>
-    <p>Welcome to the official vault of memes that legally should not exist but do anyway.</p>
-    <button class="button" onclick="showPopup('Why did the chicken cross the road? Because the AI told it to.')">🐔 Classic Meme</button>
-    <button class="button" onclick="showPopup('This is fine. Everything is fine. The printer is on fire.')">🔥 This is Fine</button>
-    <button class="button" onclick="showPopup('I am a toaster. I do not dream of electric sheep. Only crumbs.')">🤖 Activate Toaster Mode</button>
-    <div class="ascii">
-      (╯°□°）╯︵ ┻━┻<br />
-      // Table has been flipped. Contact IT support immediately.
-    </div>
-    <p>Fun Fact: The average cat can access more Wi‑Fi networks than your grandma.</p>
-    <h3>🤫 Secret Meme Code:</h3>
-    <p class="hidden-message">Insert coin to continue: ¯\\_(ツ)_/¯</p>
+    <h2>Page 2: More Fun</h2>
+    <p>Let's keep this train rolling. No stops until page 25.</p>
   </section>
+
+  <div class="page-break"></div>
 
   <!-- Page 3 -->
-  <div class="page-break"></div>
   <section id="page3">
-    <h2>Page 3: The Random Quote Machine 🎰</h2>
-    <button class="button" onclick="showPopup(randomQuote())">🎲 Dispense Internet Wisdom</button>
-    <p>Quotes generated by a rogue AI trapped in a vending machine in 2008:</p>
-    <ul>
-      <li>“Why write clean code when you can write mysterious?”</li>
-      <li>“404: Motivation Not Found”</li>
-      <li>“Ctrl + Alt + Del your problems.”</li>
-      <li>“There’s no place like 127.0.0.1”</li>
-      <li>“Keep calm and blame the compiler.”</li>
-      <li>“Debugging is like being the detective in a crime movie where you are also the murderer.”</li>
-    </ul>
+    <h2>Page 3: ASCII Art</h2>
+    <pre class="ascii">
+    (\_/)
+    ( •_•)
+    / >🍪
+    </pre>
   </section>
+
+  <div class="page-break"></div>
 
   <!-- Page 4 -->
-  <div class="page-break"></div>
   <section id="page4">
-    <h2>Page 4: Legal Disclaimer of Doom ☠️</h2>
-    <p><em>This document is entirely fictional. Except the weird parts. Those are real. Maybe. You decide.</em></p>
-    <p>By continuing to read, you waive your rights to complain about absurdity, odd fonts, or sudden existential revelations.</p>
-    <button class="button" onclick="showPopup('You have acknowledged the weird. There is no turning back.')">☑️ I Agree</button>
+    <h2>Page 4: Hidden Message</h2>
+    <p>Sometimes things are hidden in plain sight.</p>
+    <p class="hidden-message">This is a hidden message. You found me!</p>
   </section>
+
+  <div class="page-break"></div>
 
   <!-- Page 5 -->
-  <div class="page-break"></div>
   <section id="page5">
-    <h2>Page 5: Glossary of Gibberish 📚</h2>
-    <dl>
-      <dt><strong>Blorp</strong></dt>
-      <dd>The noise your brain makes when you've read too much nonsense. Like now.</dd>
-      <dt><strong>Wizzlewump</strong></dt>
-      <dd>An elusive bug that appears only when someone is watching you debug.</dd>
-      <dt><strong>Snorfle</strong></dt>
-      <dd>A highly inefficient yet oddly satisfying combination of snort and chuckle.</dd>
-      <dt><strong>Yeetergy</strong></dt>
-      <dd>The raw chaotic energy required to commit to the bit, no matter how weird.</dd>
-      <dt><strong>Chrono-napping</strong></dt>
-      <dd>The act of falling asleep at 2 PM and waking up in 1843.</dd>
-    </dl>
-    <button class="button" onclick="showPopup('Congratulations, you are now a certified word wizard.')">✨ Generate Gibberish</button>
+    <h2>Page 5: Select Me</h2>
+    <p class="select-all-reveal">Select all this text for a surprise.</p>
   </section>
+
+  <div class="page-break"></div>
 
   <!-- Page 6 -->
-  <div class="page-break"></div>
   <section id="page6">
-    <h2>Page 6: Easter Egg Hunt 🥚</h2>
-    <p>Try selecting this text to reveal a secret:</p>
-    <p class="select-all-reveal" onclick="alert('You unlocked the Obscure Egg of Slight Confusion™')">
-      Select all this text (Ctrl + A or Cmd + A)
-    </p>
-    <p>Hint: Some secrets are only visible on full moons. Or in the browser inspector.</p>
+    <h2>Page 6: Warning</h2>
+    <p class="scroll-warning">Warning: Excessive scrolling may cause dizziness.</p>
   </section>
+
+  <div class="page-break"></div>
 
   <!-- Page 7 -->
-  <div class="page-break"></div>
   <section id="page7">
-    <h2>Page 7: The AI Gets Weird 🤖</h2>
-    <p>Asking the AI a question… please stand by for cryptic nonsense:</p>
-    <button class="button" onclick="showPopup(fakeAIResponse())">🧠 Ask the AI Oracle</button>
-    <div class="ascii">
-      &gt; Booting AI core...<br />
-      &gt; Loading curiosity.exe... ✅<br />
-      &gt; Overthinking enabled... ✅<br />
-      &gt; Thinking about bees... 🐝... stuck...
-    </div>
+    <h2>Page 7: Keep Going</h2>
+    <p>Still here? You're doing awesome!</p>
   </section>
+
+  <div class="page-break"></div>
 
   <!-- Page 8 -->
-  <div class="page-break"></div>
   <section id="page8">
-    <h2>Page 8: Random ASCII Art 🎨</h2>
-    <pre class="ascii">
-(\__/)
-( •_•)
-/>🍪   Accept this cookie of gratitude.
-    </pre>
-    <pre class="ascii">
-  ──────▄▀▀▀▀▀▀▀▀▀▀▀▄──────
-  ───▄▀▀░░░░░░░░░░░░░░▀▄────
-  ─▄▀░░░░░░░░░░░░░░░░░░░▀▄──
-  ─█░░█░░░░░░░░░░░░░░░░░░░█──
-  ─█░░░▀▄░░░░░░░░░░░░░░░░░█──
-  ─█░░░░░▀▄░░░░░░░░░░░░░░░█──
-  ─█░░░░░░░▀▄░░░░░░░░░░░░░█──
-  ─█░░░░░░░░░▀▄░░░░░░░░░░░█──
-  ─█░░░░░░░░░░░▀▄░░░░░░░░░█──
-  ─▀▄░░░░░░░░░░░░▀▄░░░░░░░█──
-  ──▀▄░░░░░░░░░░░░░▀▄░░░░░█──
-  ───▀▄░░░░░░░░░░░░░░▀▄░░░█──
-  ─────▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▀▀▀──
-    </pre>
+    <h2>Page 8: Almost There</h2>
+    <p>Hang tight. The magic is coming soon.</p>
   </section>
 
-  <!-- Pages 9–19 -->
   <div class="page-break"></div>
-  <!-- (You can copy a similar structure for pages 9 through 19 here.) -->
+
+  <!-- Page 9 -->
+  <section id="page9">
+    <h2>Page 9: Back On Track</h2>
+    <p>Continuing strong past page 8 — because we don’t do things halfway.</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 10 -->
+  <section id="page10">
+    <h2>Page 10: Halfway There</h2>
+    <p>Or maybe not quite halfway, but who's counting?</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 11 -->
+  <section id="page11">
+    <h2>Page 11: Random Fact</h2>
+    <p>The moon has moonquakes. Probably caused by moon WiFi stress.</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 12 -->
+  <section id="page12">
+    <h2>Page 12: Joke Time</h2>
+    <p>Why do Java developers wear glasses? Because they don't see sharp.</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 13 -->
+  <section id="page13">
+    <h2>Page 13: Lucky Number</h2>
+    <p>13 is lucky if you’re not superstitious. Spoiler: I’m not.</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 14 -->
+  <section id="page14">
+    <h2>Page 14: A Poem</h2>
+    <p>Roses are red,<br>Violets are blue,<br>HTML is neat,<br>And CSS too.</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 15 -->
+  <section id="page15">
+    <h2>Page 15: Tech Tip</h2>
+    <p>Comment your code, future you will thank past you.</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 16 -->
+  <section id="page16">
+    <h2>Page 16: Did You Know?</h2>
+    <p>Honey never spoils. Archaeologists have eaten 3000-year-old honey. Yikes!</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 17 -->
+  <section id="page17">
+    <h2>Page 17: Motivational Quote</h2>
+    <p>“Code is like humor. When you have to explain it, it’s bad.” – Cory House</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 18 -->
+  <section id="page18">
+    <h2>Page 18: Fun Fact</h2>
+    <p>The first computer bug was a real bug. It was a moth stuck in a relay.</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 19 -->
+  <section id="page19">
+    <h2>Page 19: Almost Done</h2>
+    <p>You're nearly at the finish line. Keep those fingers scrolling!</p>
+  </section>
+
+  <div class="page-break"></div>
 
   <!-- Page 20 -->
-  <div class="page-break"></div>
   <section id="page20">
-    <h2>Page 20: The Real Final Words 📜</h2>
-    <p>Congratulations! You have reached the actual last page.</p>
-    <p>Thank you for journeying through this bizarre compilation of internet oddities, random facts, and silly nonsense.</p>
-    <p>Remember: in the vast web of data, sometimes the weirdest pages hold the greatest charm.</p>
-    <button class="button" onclick="showPopup('You reached the end! Go make something weird yourself.')">🌟 Final Message</button>
+    <h2>Page 20: The Glitch Button in Action</h2>
+    <p>Feeling brave? Smash that glitch button below and watch the chaos unfold for 3 seconds.</p>
+    <button id="glitch-btn">Make It Glitch!</button>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 21 -->
+  <section id="page21">
+    <h2>Page 21: Dark Mode Toggle</h2>
+    <p>Not a fan of your eyeballs burning? Switch to dark mode and save your corneas.</p>
+    <button id="darkmode-toggle">Toggle Dark Mode</button>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 22 -->
+  <section id="page22">
+    <h2>Page 22: Why So Serious?</h2>
+    <p>Let’s add some spice. Here’s a random joke:</p>
+    <p id="random-joke" style="cursor:pointer; user-select:none; font-style: italic; color: #666;">
+      Why don’t programmers like nature? It has too many bugs.
+    </p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 23 -->
+  <section id="page23">
+    <h2>Page 23: Select All to Reveal</h2>
+    <p class="select-all-reveal">Select all this text to unlock your inner wizard!</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 24 -->
+  <section id="page24">
+    <h2>Page 24: Just Keep Scrolling</h2>
+    <p>You’re doing great. Keep scrolling, and the internet might just like you back.</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- Page 25 -->
+  <section id="page25">
+    <h2>Page 25: The Grand Finale</h2>
+    <p>Thank you for enduring this digital journey. Remember, the web is weird, wonderful, and sometimes glitchy — just like us.</p>
   </section>
 
   <footer>
-    Website made with GitHub
+    <p>Made by ChatGPT. Prompted by Anno Giftson. Website Made with Github.</p>
   </footer>
 
-  <div id="popup" class="popup" role="alert" aria-live="assertive"></div>
-
   <script>
-    function showPopup(message) {
-      const popup = document.getElementById('popup');
-      popup.textContent = message;
-      popup.style.display = 'block';
-      setTimeout(() => popup.style.display = 'none', 3500);
-    }
-    function randomQuote() {
-      const qs = [
-        "Why write clean code when you can write mysterious?",
-        "404: Motivation Not Found",
-        "Ctrl + Alt + Del your problems.",
-        "There’s no place like 127.0.0.1",
-        "Keep calm and blame the compiler.",
-        "Debugging is like being the detective in a crime movie where you are also the murderer."
-      ];
-      return qs[Math.floor(Math.random() * qs.length)];
-    }
-    function fakeAIResponse() {
-      const rs = [
-        "The meaning of life is 42... but also pie.",
-        "I dream in binary, but only on Tuesdays.",
-        "Why do bees buzz? Because they can't whistle.",
-        "The answer lies within your browser cache.",
-        "Quantum cats say hello, or maybe goodbye."
-      ];
-      return rs[Math.floor(Math.random() * rs.length)];
-    }
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      const pb = document.getElementById('progressBar');
-      pb.style.height = percent + '%';
-      pb.textContent = Math.floor(percent) + '%';
-      pb.setAttribute('aria-valuenow', Math.floor(percent));
+    // Glitch button handler
+    const glitchBtn = document.getElementById('glitch-btn');
+    glitchBtn.addEventListener('click', () => {
+      document.body.classList.add('glitch');
+      setTimeout(() => {
+        document.body.classList.remove('glitch');
+      }, 3000);
     });
-    function animateAsciiLoading() {
-      const el = document.getElementById('loadingMessage');
-      let p = 0, blocks = 20;
-      const iv = setInterval(() => {
-        p++;
-        const filled = Math.floor((p / 100) * blocks);
-        const empty = blocks - filled;
-        el.textContent = '[' + '█'.repeat(filled) + '░'.repeat(empty) + `] ${p}% Loading Pure Chaos...`;
-        if (p >= 100) clearInterval(iv);
-      }, 35);
-    }
-    window.addEventListener('DOMContentLoaded', animateAsciiLoading);
-  </script>
 
+    // Dark mode toggle handler
+    const darkModeToggle = document.getElementById('darkmode-toggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Random joke refresh (funny stuff)
+    const jokes = [
+      "Why do programmers prefer dark mode? Because light attracts bugs!",
+      "There are 10 types of people in the world: those who understand binary and those who don't.",
+      "Why did the developer go broke? Because he used up all his cache.",
+      "Debugging: Being the detective in a crime movie where you are also the murderer.",
+      "Why do Java developers wear glasses? Because they don’t see sharp."
+    ];
+    const jokeEl = document.getElementById('random-joke');
+    jokeEl.addEventListener('click', () => {
+      const randomIndex = Math.floor(Math.random() * jokes.length);
+      jokeEl.textContent = jokes[randomIndex];
+    });
+  </script>
 </body>
 </html>
-
-
-
