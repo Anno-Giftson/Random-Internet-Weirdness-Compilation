@@ -1,212 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Funny & Weird Website</title>
-  <style>
-    /* === Your original styles, unchanged === */
-    body {
-      background-color: #121212;
-      color: #eee;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      margin: 0;
-      padding: 0;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Random Internet Weirdness Compilation — Extended Edition</title>
+<style>
+  body {
+    font-family: 'Courier New', monospace;
+    background-color: #fffbe7;
+    color: #222;
+    padding: 2rem 4rem 2rem 5rem;
+    max-width: 900px;
+    margin: auto;
+    line-height: 1.4;
+    position: relative;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+  body.dark-mode {
+    background-color: #121212;
+    color: #eee;
+  }
+  h1, h2, h3 {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+  .button {
+    display: inline-block;
+    background-color: #222;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 10px 0 15px 0;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  .button:hover {
+    background-color: #444;
+  }
+  body.dark-mode .button {
+    background-color: #eee;
+    color: #222;
+  }
+  body.dark-mode .button:hover {
+    background-color: #bbb;
+  }
+  .hidden-message {
+    color: white;
+    user-select: text;
+    background-color: #222;
+    padding: 5px 8px;
+    border-radius: 4px;
+    margin: 15px 0;
+    display: inline-block;
+  }
+  body.dark-mode .hidden-message {
+    background-color: #444;
+    color: #ccc;
+  }
+  .ascii {
+    font-family: monospace;
+    white-space: pre;
+    color: #4caf50;
+    margin: 20px 0;
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+  body.dark-mode .ascii {
+    background: #222;
+    color: #80ff80;
+  }
+  .popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fffa;
+    padding: 20px;
+    border: 2px dashed #222;
+    display: none;
+    z-index: 9999;
+    max-width: 300px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px;
+    user-select: none;
+  }
+  footer {
+    margin-top: 80px;
+    font-size: 0.9rem;
+    color: #999;
+    text-align: center;
+    user-select: none;
+  }
+  body.dark-mode footer {
+    color: #777;
+  }
+  .page-break {
+    border-top: 3px dashed #222;
+    margin: 60px 0;
+  }
+  body.dark-mode .page-break {
+    border-top: 3px dashed #555;
+  }
+  .scroll-warning {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+  }
+  .select-all-reveal {
+    color: white;
+    background: black;
+    user-select: all;
+    padding: 5px;
+    margin-top: 25px;
+    display: inline-block;
+    border-radius: 4px;
+    cursor: text;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+  body.dark-mode .select-all-reveal {
+    background: #333;
+    color: #ddd;
+  }
+  .progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 100vh;
+    background-color: #ddd;
+    border-radius: 0 12px 12px 0;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
+    z-index: 10000;
+    transition: background-color 0.5s ease;
+  }
+  body.dark-mode .progress-container {
+    background-color: #333;
+    box-shadow: inset 0 1px 3px rgba(255,255,255,.2);
+  }
+  .progress-bar {
+    height: 0%;
+    width: 100%;
+    background-color: #4caf50;
+    text-align: center;
+    color: white;
+    line-height: 25px;
+    font-weight: bold;
+    border-radius: 0 12px 12px 0;
+    transition: height 0.2s ease;
+    user-select: none;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 12px;
+    padding-top: 5px;
+    box-sizing: border-box;
+  }
+  body.dark-mode .progress-bar {
+    background-color: #80e27e;
+    color: #222;
+  }
+  #darkModeToggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10001;
+    transition: background-color 0.3s ease;
+  }
+  #darkModeToggle:hover {
+    background-color: #444;
+  }
+  body.dark-mode #darkModeToggle {
+    background-color: #eee;
+    color: #222;
+  }
+  body.dark-mode #darkModeToggle:hover {
+    background-color: #bbb;
+  }
+  /* Glitch effect keyframes */
+  @keyframes glitch-skew {
+    0% {
+      transform: translate(0);
+      opacity: 1;
     }
-    header {
-      padding: 1rem;
-      background-color: #220066;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
+    20% {
+      transform: translate(-5px, 3px) skew(-5deg);
+      opacity: 0.8;
     }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      background-color: #330088;
-      padding: 0.5rem;
+    40% {
+      transform: translate(5px, -3px) skew(5deg);
+      opacity: 0.6;
     }
-    nav button {
-      background-color: #440099;
-      color: #ddd;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      font-size: 1rem;
-      border-radius: 5px;
-      transition: background-color 0.3s;
+    60% {
+      transform: translate(-3px, 2px) skew(-3deg);
+      opacity: 0.8;
     }
-    nav button:hover {
-      background-color: #5511bb;
+    80% {
+      transform: translate(3px, -2px) skew(3deg);
+      opacity: 1;
     }
-    section {
-      padding: 2rem;
-      max-width: 800px;
-      margin: 2rem auto;
-      background-color: #280050;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #330088;
+    100% {
+      transform: translate(0);
+      opacity: 1;
     }
-    h2 {
-      color: #bb55ff;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    /* Progress bar */
-    #progressbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 5px;
-      background: linear-gradient(90deg, #a055ff, #ff55aa);
-      width: 0%;
-      z-index: 9999;
-      transition: width 0.25s ease-out;
-    }
-    /* === Popup Overlay === */
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background-color: rgba(0, 0, 0, 0.85); /* DARKER overlay */
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-      backdrop-filter: blur(4px);
-    }
-    .overlay.active {
-      display: flex;
-    }
-    .popup-content {
-      background-color: #3a0ca3; /* changed for better visibility in dark mode */
-      color: #fff;
-      padding: 1.5rem 2rem;
-      border-radius: 15px;
-      max-width: 90vw;
-      max-height: 70vh;
-      overflow-y: auto;
-      box-shadow: 0 0 30px #a055ff;
-      font-size: 1.2rem;
-      line-height: 1.4;
-      text-align: center;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-    }
-    .close-btn {
-      margin-top: 1rem;
-      background-color: #ff55aa;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      color: #fff;
-      transition: background-color 0.3s;
-    }
-    .close-btn:hover {
-      background-color: #ff88bb;
-    }
-  </style>
+  }
+  .glitch {
+    animation: glitch-skew 0.3s infinite;
+    filter: contrast(150%) saturate(180%);
+  }
+</style>
 </head>
 <body>
+<button id="darkModeToggle" aria-pressed="false" aria-label="Toggle Dark Mode">🌙 Dark Mode</button>
+<div class="progress-container" aria-label="Page scroll progress">
+  <div id="progressBar" class="progress-bar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">0%</div>
+</div>
+<h1>🌀 RANDOM INTERNET WEIRDNESS COMPILATION — ULTRA EXTENDED EDITION 🌀</h1>
+<p><strong>Greetings, digital wanderer.</strong> You have stumbled upon a page best viewed at 3 AM during a full moon with socks on your hands and toast in your pockets. Proceed accordingly.</p>
+<div class="ascii" id="loadingMessage">
+  [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 0% Loading Pure Chaos...
+</div>
 
-  <header>Welcome to the Weird & Funny Site</header>
-
-  <nav>
-    <button class="popup-btn" data-page="home">Home</button>
-    <button class="popup-btn" data-page="about">About</button>
-    <button class="popup-btn" data-page="projects">Projects</button>
-    <button class="popup-btn" data-page="gallery">Gallery</button>
-    <button class="popup-btn" data-page="contact">Contact</button>
-  </nav>
-
-  <div id="progressbar"></div>
-
-  <!-- The 5 Sections you selected -->
-  <section id="home">
-    <h2>Home</h2>
-    <p>Welcome to this delightfully strange website! Prepare yourself for an adventure in weirdness.</p>
-  </section>
-
-  <section id="about">
-    <h2>About</h2>
-    <p>This website was crafted with quirks and giggles by ChatGPT, inspired by Anno Giftson's prompt.</p>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <p>Here you'll find a collection of absurd and whimsical projects — none of which make much sense!</p>
-  </section>
-
-  <section id="gallery">
-    <h2>Gallery</h2>
-    <p>Behold some ridiculous images and memes curated specially for your amusement and confusion.</p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Got questions? Send a carrier pigeon or simply imagine your message reaching me telepathically.</p>
-  </section>
-
-  <!-- Popup Overlay -->
-  <div class="overlay" id="popupOverlay">
-    <div class="popup-content" id="popupContent">
-      <p id="popupText"></p>
-      <button class="close-btn" id="closePopup">Close</button>
-    </div>
+<!-- PAGE 1 -->
+<section id="page1">
+  <button class="button" onclick="showPopup('You have clicked a button. You are now part of the simulation.')">🔘 Click for Absolutely Nothing</button><br />
+  <button class="button" onclick="showPopup('Wisdom Level +1: “Never trust a code comment written in Comic Sans.”')">📜 Dump Some Wisdom</button><br />
+  <button class="button" onclick="showPopup('ERROR 500: Logic Overload. Unplug and replug your thoughts.')">⚠️ Simulated Error</button>
+  <p>Random Fact #174: Cows have best friends and get stressed when separated. Also, same.</p>
+  <div class="ascii">
+    Boot Log v3.14.159:<br />
+    - Verifying quantum particles... Disagreeing<br />
+    - Checking reality layers... Peeling back<br />
+    - Reinitializing cosmic spaghetti... Done<br />
+    - Summoning mild absurdity... ✔️
   </div>
+  <h3>🤫 Hidden Message:</h3>
+  <p class="hidden-message">You’ve unlocked nothing. But hey, good effort!</p>
+  <h3>👁️‍🗨️ Warning:</h3>
+  <p class="scroll-warning">WARNING: Scrolling further may lead to unexpected philosophical discomfort or mild giggles.</p>
+  <div style="height: 400px;"></div>
+  <div class="ascii">
+    You have reached a checkpoint.<br />
+    Save your progress by screaming into a mason jar. 🫙<br />
+    Proceed with chaos.
+  </div>
+</section>
 
-  <footer style="text-align:center; margin: 2rem 0; color: #999; font-size: 0.9rem;">
-    Created by ChatGPT. Prompted by Anno Giftson. Website Made with GitHub.
-  </footer>
+<div class="page-break"></div>
 
-  <script>
-    // Progress bar logic
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      document.getElementById('progressbar').style.width = scrollPercent + '%';
-    });
+<!-- PAGE 3 -->
+<section id="page3">
+  <h2>Page 3: The Random Quote Machine 🎰</h2>
+  <button class="button" onclick="showPopup(randomQuote())">🎲 Dispense Internet Wisdom</button>
+  <p>Quotes generated by a rogue AI trapped in a vending machine in 2008:</p>
+  <ul>
+    <li>“Why write clean code when you can write mysterious?”</li>
+    <li>“404: Motivation Not Found”</li>
+    <li>“Ctrl + Alt + Del your problems.”</li>
+    <li>“There’s no place like 127.0.0.1”</li>
+    <li>“Keep calm and blame the compiler.”</li>
+    <li>“Debugging is like being the detective in a crime movie where you are also the murderer.”</li>
+  </ul>
+  <p>Press the button and receive your daily dose of chaos.</p>
+</section>
 
-    // Popup logic
-    const popupButtons = document.querySelectorAll('.popup-btn');
-    const popupOverlay = document.getElementById('popupOverlay');
-    const popupText = document.getElementById('popupText');
-    const closePopup = document.getElementById('closePopup');
+<div class="page-break"></div>
 
-    // Original popup text for each page button (from your original site)
-    const popupTexts = {
-      home: "Welcome to the weirdest corner of the internet! Embrace the chaos and enjoy your stay.",
-      about: "This quirky website was dreamt up by ChatGPT based on Anno Giftson's prompt. Expect the unexpected!",
-      projects: "Our projects include nonsensical algorithms, hilarious doodles, and experiments in absurdity.",
-      gallery: "Feast your eyes on this gallery of bizarre art and random funny pictures curated for you.",
-      contact: "Want to say hello? Imagine a message in a bottle or just wave your hands wildly in the air!"
-    };
+<!-- PAGE 6 -->
+<section id="page6">
+  <h2>Page 6: The ASCII Art Museum 🎨</h2>
+  <pre class="ascii">
+  ,_     _
+  |\_,-~/
+  / _  _ |    ,--.
+ (  @  @ )   / ,-'
+  \  _T_/-._( (
+  /         `. \
+ |         _  \ |
+  \ \ ,  /      |
+   || |-_\__   /
+  ((_/`(____,-'
+  </pre>
+  <p>Art is subjective. Some see a dog. Others see the internet's soul.</p>
+</section>
 
-    popupButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const page = button.getAttribute('data-page');
-        popupText.textContent = popupTexts[page] || "Oops! No info here.";
-        popupOverlay.classList.add('active');
-      });
-    });
+<div class="page-break"></div>
 
-    closePopup.addEventListener('click', () => {
-      popupOverlay.classList.remove('active');
-    });
+<!-- PAGE 16 -->
+<section id="page16">
+  <h2>Page 16: The Conspiracy Corner 🕵️‍♂️</h2>
+  <p>All conspiracy theories on this page are 100% made up for entertainment.</p>
+  <button class="button" onclick="showPopup('Aliens built the pyramids, but only because they liked the view.')">👽 Pyramid Builders</button>
+  <button class="button" onclick="showPopup('The moon landing was real, but Neil Armstrong forgot his keys on the moon.')">🌕 Moon Landing</button>
+  <button class="button" onclick="showPopup('Bigfoot prefers almond milk over regular milk.')">🦶 Bigfoot</button>
+  <p>Remember, keep your tin foil hats tight!</p>
+</section>
 
-    // Also close popup if clicking outside popup content
-    popupOverlay.addEventListener('click', (e) => {
-      if (e.target === popupOverlay) {
-        popupOverlay.classList.remove('active');
-      }
-    });
-  </script>
+<div class="page-break"></div>
 
+<!-- PAGE 18 -->
+<section id="page18">
+  <h2>Page 18: The Ultimate Easter Egg 🥚</h2>
+  <p>Congratulations! You have found the ultimate Easter egg. Share your prize with your nearest digital friend.</p>
+  <button class="button" onclick="showPopup('You have earned the secret title: Master of Weirdness 🏆')">Claim Your Prize</button>
+  <div class="ascii glitch">
+    __     __         _                 _ 
+    \ \   / /__ _ __ | |__   ___  _ __ | |
+     \ \ / / _ \ '_ \| '_ \ / _ \| '_ \| |
+      \ V /  __/ | | | | | | (_) | | | |_|
+       \_/ \___|_| |_|_| |_|\___/|_| |_(_)
+  </div>
+  <p>May your internet be forever strange.</p>
+</section>
+
+<div class="page-break"></div>
+
+<footer>
+  — created by <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">YourName</a> —
+</footer>
+
+<div id="popup" class="popup" role="alert" aria-live="assertive"></div>
+
+<script>
+  // Dark Mode Toggle
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  darkModeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    let isDark = document.body.classList.contains('dark-mode');
+    darkModeToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+    darkModeToggle.setAttribute('aria-pressed', isDark);
+  });
+
+  // Scroll Progress Bar
+  const progressBar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    let scrollTop = window.scrollY;
+    let docHeight = document.body.scrollHeight - window.innerHeight;
+    let scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.height = scrollPercent + '%';
+    progressBar.textContent = Math.round(scrollPercent) + '%';
+    progressBar.setAttribute('aria-valuenow', Math.round(scrollPercent));
+  });
+
+  // Popup functionality
+  const popup = document.getElementById('popup');
+  function showPopup(message) {
+    popup.textContent = message;
+    popup.style.display = 'block';
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 2500);
+  }
+
+  // Random Quote Generator for Page 3 button
+  function randomQuote() {
+    const quotes = [
+      "Why write clean code when you can write mysterious?",
+      "404: Motivation Not Found",
+      "Ctrl + Alt + Del your problems.",
+      "There's no place like 127.0.0.1",
+      "Keep calm and blame the compiler.",
+      "Debugging is like being the detective in a crime movie where you are also the murderer."
+    ];
+    return quotes[Math.floor(Math.random() * quotes.length)];
+  }
+
+  // Loading animation for the loadingMessage ASCII block
+  let loadProgress = 0;
+  const loadingMessage = document.getElementById('loadingMessage');
+  const loadInterval = setInterval(() => {
+    loadProgress += Math.floor(Math.random() * 10) + 5; // increment by random 5-15%
+    if (loadProgress >= 100) {
+      loadProgress = 100;
+      clearInterval(loadInterval);
+      loadingMessage.textContent = "[████████████████████████████████████] 100% Pure Chaos Loaded!";
+    } else {
+      let blocks = Math.floor(loadProgress / 4);
+      let bar = '[' + '█'.repeat(blocks) + '░'.repeat(25 - blocks) + '] ' + loadProgress + '% Loading Pure Chaos...';
+      loadingMessage.textContent = bar;
+    }
+  }, 400);
+</script>
 </body>
 </html>
+
 
 
 
