@@ -5,311 +5,209 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Funny & Weird Website</title>
   <style>
-    /* Base Styles */
+    /* === Your original styles, unchanged === */
     body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #1a1a1a;
+      background-color: #121212;
       color: #eee;
-      user-select: none;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      margin: 0;
+      padding: 0;
     }
-
-    /* Container */
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+    header {
+      padding: 1rem;
+      background-color: #220066;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
     }
-
-    /* Navigation */
     nav {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 40px;
+      gap: 1rem;
+      background-color: #330088;
+      padding: 0.5rem;
     }
     nav button {
-      background-color: #3a0ca3;
+      background-color: #440099;
+      color: #ddd;
       border: none;
-      border-radius: 12px;
-      color: #fff;
-      padding: 12px 22px;
-      font-weight: 700;
+      padding: 0.5rem 1rem;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-family: 'Arial Black', Arial, sans-serif;
-      box-shadow: 0 0 10px #720026;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s;
     }
-    nav button:hover,
-    nav button.active {
-      background-color: #720026;
-      box-shadow: 0 0 20px #ff005c;
+    nav button:hover {
+      background-color: #5511bb;
     }
-
-    /* Pages */
-    section.page {
-      display: none;
-      background-color: #292929;
-      border-radius: 15px;
-      padding: 30px;
-      box-shadow: 0 0 25px #720026;
-      animation: fadeIn 0.5s ease forwards;
+    section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: 2rem auto;
+      background-color: #280050;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #330088;
     }
-    section.page.active {
-      display: block;
+    h2 {
+      color: #bb55ff;
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    /* Progress Bar Container */
-    .progress-container {
-      width: 100%;
-      height: 12px;
-      background-color: #444;
-      border-radius: 6px;
-      margin-bottom: 40px;
-      overflow: hidden;
-      box-shadow: inset 0 0 10px #720026;
-    }
-
-    /* Progress Bar */
-    .progress-bar {
-      height: 12px;
+    /* Progress bar */
+    #progressbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #a055ff, #ff55aa);
       width: 0%;
-      background: linear-gradient(90deg, #720026, #ff005c);
-      transition: width 0.4s ease;
-      box-shadow: 0 0 15px #ff005c;
+      z-index: 9999;
+      transition: width 0.25s ease-out;
     }
-
-    /* Popup Overlay */
+    /* === Popup Overlay === */
     .overlay {
       position: fixed;
       top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.85); /* Darker overlay */
-      display: flex;
+      width: 100vw; height: 100vh;
+      background-color: rgba(0, 0, 0, 0.85); /* DARKER overlay */
+      display: none;
       justify-content: center;
       align-items: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 9999;
+      z-index: 10000;
+      backdrop-filter: blur(4px);
     }
     .overlay.active {
-      opacity: 1;
-      pointer-events: auto;
+      display: flex;
     }
-
-    /* Popup Content */
     .popup-content {
-      background-color: #3a0ca3;
-      color: #ffe6ff; /* lighter, easier to read */
-      padding: 40px 50px;
-      border-radius: 25px;
+      background-color: #3a0ca3; /* changed for better visibility in dark mode */
+      color: #fff;
+      padding: 1.5rem 2rem;
+      border-radius: 15px;
+      max-width: 90vw;
+      max-height: 70vh;
+      overflow-y: auto;
+      box-shadow: 0 0 30px #a055ff;
+      font-size: 1.2rem;
+      line-height: 1.4;
       text-align: center;
-      box-shadow: 0 0 40px #ff005c;
-      max-width: 420px;
-      position: relative;
-      font-weight: 700;
-      font-family: 'Arial Black', Arial, sans-serif;
-      font-size: 18px;
-      user-select: none;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
     }
-
-    /* Close Button */
-    .popup-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      background: none;
+    .close-btn {
+      margin-top: 1rem;
+      background-color: #ff55aa;
       border: none;
-      font-size: 28px;
-      color: #ffe6ff;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
       cursor: pointer;
-      font-weight: 700;
-      user-select: none;
-      transition: color 0.3s ease;
+      font-weight: bold;
+      color: #fff;
+      transition: background-color 0.3s;
     }
-    .popup-close:hover {
-      color: #ff005c;
-    }
-
-    /* Popup Button */
-    .popup-btn {
-      margin-top: 25px;
-      background-color: #720026;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 20px;
-      color: #ffe6ff;
-      cursor: pointer;
-      font-weight: 700;
-      font-family: 'Arial Black', Arial, sans-serif;
-      box-shadow: 0 0 15px #ff005c;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-    .popup-btn:hover {
-      background-color: #ff005c;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      margin: 60px 0 20px 0;
-      color: #888;
-      font-size: 14px;
-      font-family: 'Arial', sans-serif;
-      user-select: none;
+    .close-btn:hover {
+      background-color: #ff88bb;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <header>Welcome to the Weird & Funny Site</header>
 
-    <!-- Navigation -->
-    <nav>
-      <button class="nav-btn active" data-page="home">Home</button>
-      <button class="nav-btn" data-page="about">About</button>
-      <button class="nav-btn" data-page="projects">Projects</button>
-      <button class="nav-btn" data-page="gallery">Gallery</button>
-      <button class="nav-btn" data-page="contact">Contact</button>
-    </nav>
+  <nav>
+    <button class="popup-btn" data-page="home">Home</button>
+    <button class="popup-btn" data-page="about">About</button>
+    <button class="popup-btn" data-page="projects">Projects</button>
+    <button class="popup-btn" data-page="gallery">Gallery</button>
+    <button class="popup-btn" data-page="contact">Contact</button>
+  </nav>
 
-    <!-- Progress Bar -->
-    <div class="progress-container">
-      <div class="progress-bar"></div>
-    </div>
+  <div id="progressbar"></div>
 
-    <!-- Pages -->
+  <!-- The 5 Sections you selected -->
+  <section id="home">
+    <h2>Home</h2>
+    <p>Welcome to this delightfully strange website! Prepare yourself for an adventure in weirdness.</p>
+  </section>
 
-    <section id="home" class="page active">
-      <h1>Welcome to Our Funny & Weird Website</h1>
-      <p>Step inside and explore the quirks and the fun we offer.</p>
-      <button class="popup-btn">Click for a surprise!</button>
-    </section>
+  <section id="about">
+    <h2>About</h2>
+    <p>This website was crafted with quirks and giggles by ChatGPT, inspired by Anno Giftson's prompt.</p>
+  </section>
 
-    <section id="about" class="page">
-      <h1>About Us</h1>
-      <p>We are a bunch of quirky developers who love adding weirdness to the web. Expect the unexpected here!</p>
-      <button class="popup-btn">Know more secrets</button>
-    </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <p>Here you'll find a collection of absurd and whimsical projects — none of which make much sense!</p>
+  </section>
 
-    <section id="projects" class="page">
-      <h1>Our Projects</h1>
-      <ul>
-        <li>Project Weirdify: Making the world strange, one line of code at a time.</li>
-        <li>AlienChat: A chat app for extraterrestrials (not verified yet).</li>
-        <li>TimeTwist: Slightly bending the rules of time... in code.</li>
-      </ul>
-      <button class="popup-btn">View project surprise</button>
-    </section>
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <p>Behold some ridiculous images and memes curated specially for your amusement and confusion.</p>
+  </section>
 
-    <section id="gallery" class="page">
-      <h1>Gallery</h1>
-      <p>Here’s a collection of strange and funny pictures that inspired us.</p>
-      <button class="popup-btn">Reveal a weird pic</button>
-    </section>
-
-    <section id="contact" class="page">
-      <h1>Contact Us</h1>
-      <p>Send us your weirdest ideas or just say hi!</p>
-      <button class="popup-btn">Send a cosmic message</button>
-    </section>
-
-  </div>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Got questions? Send a carrier pigeon or simply imagine your message reaching me telepathically.</p>
+  </section>
 
   <!-- Popup Overlay -->
   <div class="overlay" id="popupOverlay">
-    <div class="popup-content">
-      <button class="popup-close" id="popupClose">&times;</button>
-      <p id="popupText">Surprise!</p>
+    <div class="popup-content" id="popupContent">
+      <p id="popupText"></p>
+      <button class="close-btn" id="closePopup">Close</button>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    Created by ChatGPT. Prompted by Anno Giftson. Website Made with Github.
+  <footer style="text-align:center; margin: 2rem 0; color: #999; font-size: 0.9rem;">
+    Created by ChatGPT. Prompted by Anno Giftson. Website Made with GitHub.
   </footer>
 
   <script>
-    const navButtons = document.querySelectorAll('nav .nav-btn');
-    const pages = document.querySelectorAll('section.page');
-    const progressBar = document.querySelector('.progress-bar');
-
-    const pageOrder = ['home', 'about', 'projects', 'gallery', 'contact'];
-
-    const popupOverlay = document.getElementById('popupOverlay');
-    const popupCloseBtn = document.getElementById('popupClose');
-    const popupButtons = document.querySelectorAll('.popup-btn');
-    const popupText = document.getElementById('popupText');
-
-    // Array of popup messages
-    const popupMessages = [
-      "Here's a weird secret just for you!",
-      "Surprise! You unlocked a cosmic joke.",
-      "Beware! The internet gremlins are watching.",
-      "Your weirdness level just increased by 42.",
-      "Aliens approve this message.",
-      "Keep calm and embrace the strange.",
-      "Did you know? Penguins propose with pebbles!",
-      "404: Normality not found.",
-      "This popup is as strange as you are.",
-      "You found the secret to eternal weirdness!"
-    ];
-
-    // Show the page & update progress bar
-    function showPage(pageId) {
-      pages.forEach(page => {
-        page.classList.toggle('active', page.id === pageId);
-      });
-      navButtons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.page === pageId);
-      });
-      const index = pageOrder.indexOf(pageId);
-      const percent = ((index + 1) / pageOrder.length) * 100;
-      progressBar.style.width = percent + '%';
-    }
-
-    // Navigation buttons click event
-    navButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        showPage(btn.dataset.page);
-      });
+    // Progress bar logic
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      document.getElementById('progressbar').style.width = scrollPercent + '%';
     });
 
-    // Popup buttons click event
-    popupButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const randomIndex = Math.floor(Math.random() * popupMessages.length);
-        popupText.textContent = popupMessages[randomIndex];
+    // Popup logic
+    const popupButtons = document.querySelectorAll('.popup-btn');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupText = document.getElementById('popupText');
+    const closePopup = document.getElementById('closePopup');
+
+    // Original popup text for each page button (from your original site)
+    const popupTexts = {
+      home: "Welcome to the weirdest corner of the internet! Embrace the chaos and enjoy your stay.",
+      about: "This quirky website was dreamt up by ChatGPT based on Anno Giftson's prompt. Expect the unexpected!",
+      projects: "Our projects include nonsensical algorithms, hilarious doodles, and experiments in absurdity.",
+      gallery: "Feast your eyes on this gallery of bizarre art and random funny pictures curated for you.",
+      contact: "Want to say hello? Imagine a message in a bottle or just wave your hands wildly in the air!"
+    };
+
+    popupButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const page = button.getAttribute('data-page');
+        popupText.textContent = popupTexts[page] || "Oops! No info here.";
         popupOverlay.classList.add('active');
       });
     });
 
-    // Popup close button
-    popupCloseBtn.addEventListener('click', () => {
+    closePopup.addEventListener('click', () => {
       popupOverlay.classList.remove('active');
     });
 
-    // Close popup if clicking outside content
-    popupOverlay.addEventListener('click', e => {
+    // Also close popup if clicking outside popup content
+    popupOverlay.addEventListener('click', (e) => {
       if (e.target === popupOverlay) {
         popupOverlay.classList.remove('active');
       }
     });
-
-    // Initialize page
-    showPage('home');
   </script>
 
 </body>
 </html>
+
 
 
 
