@@ -1,404 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Random Internet Weirdness Compilation — Extended Edition</title>
-<style>
-  body {
-    font-family: 'Courier New', monospace;
-    background-color: #fffbe7;
-    color: #222;
-    padding: 2rem 4rem 2rem 5rem;
-    max-width: 900px;
-    margin: auto;
-    line-height: 1.4;
-    position: relative;
-    transition: background-color 0.5s ease, color 0.5s ease;
-  }
-  body.dark-mode {
-    background-color: #121212;
-    color: #eee;
-  }
-  h1, h2, h3 {
-    text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-  }
-  .button {
-    display: inline-block;
-    background-color: #222;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    margin: 10px 0 15px 0;
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.3s ease;
-  }
-  .button:hover {
-    background-color: #444;
-  }
-  body.dark-mode .button {
-    background-color: #eee;
-    color: #222;
-  }
-  body.dark-mode .button:hover {
-    background-color: #bbb;
-  }
-  .hidden-message {
-    color: white;
-    user-select: text;
-    background-color: #222;
-    padding: 5px 8px;
-    border-radius: 4px;
-    margin: 15px 0;
-    display: inline-block;
-  }
-  body.dark-mode .hidden-message {
-    background-color: #444;
-    color: #ccc;
-  }
-  .ascii {
-    font-family: monospace;
-    white-space: pre;
-    color: #4caf50;
-    margin: 20px 0;
-    background: #f0f0f0;
-    padding: 10px;
-    border-radius: 6px;
-    transition: background-color 0.5s ease, color 0.5s ease;
-  }
-  body.dark-mode .ascii {
-    background: #222;
-    color: #80ff80;
-  }
-  .popup {
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fffa;
-    padding: 20px;
-    border: 2px dashed #222;
-    display: none;
-    z-index: 9999;
-    max-width: 300px;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 10px;
-    user-select: none;
-  }
-  footer {
-    margin-top: 80px;
-    font-size: 0.9rem;
-    color: #999;
-    text-align: center;
-    user-select: none;
-  }
-  body.dark-mode footer {
-    color: #777;
-  }
-  .page-break {
-    border-top: 3px dashed #222;
-    margin: 60px 0;
-  }
-  body.dark-mode .page-break {
-    border-top: 3px dashed #555;
-  }
-  .scroll-warning {
-    color: red;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    font-size: 1.2rem;
-  }
-  .select-all-reveal {
-    color: white;
-    background: black;
-    user-select: all;
-    padding: 5px;
-    margin-top: 25px;
-    display: inline-block;
-    border-radius: 4px;
-    cursor: text;
-    transition: background-color 0.5s ease, color 0.5s ease;
-  }
-  body.dark-mode .select-all-reveal {
-    background: #333;
-    color: #ddd;
-  }
-  .progress-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 30px;
-    height: 100vh;
-    background-color: #ddd;
-    border-radius: 0 12px 12px 0;
-    overflow: hidden;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
-    z-index: 10000;
-    transition: background-color 0.5s ease;
-  }
-  body.dark-mode .progress-container {
-    background-color: #333;
-    box-shadow: inset 0 1px 3px rgba(255,255,255,.2);
-  }
-  .progress-bar {
-    height: 0%;
-    width: 100%;
-    background-color: #4caf50;
-    text-align: center;
-    color: white;
-    line-height: 25px;
-    font-weight: bold;
-    border-radius: 0 12px 12px 0;
-    transition: height 0.2s ease;
-    user-select: none;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    font-size: 12px;
-    padding-top: 5px;
-    box-sizing: border-box;
-  }
-  body.dark-mode .progress-bar {
-    background-color: #80e27e;
-    color: #222;
-  }
-  #darkModeToggle {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background-color: #222;
-    color: #fff;
-    border: none;
-    padding: 8px 14px;
-    font-size: 0.9rem;
-    border-radius: 8px;
-    cursor: pointer;
-    user-select: none;
-    z-index: 10001;
-    transition: background-color 0.3s ease;
-  }
-  #darkModeToggle:hover {
-    background-color: #444;
-  }
-  body.dark-mode #darkModeToggle {
-    background-color: #eee;
-    color: #222;
-  }
-  body.dark-mode #darkModeToggle:hover {
-    background-color: #bbb;
-  }
-  /* Glitch effect keyframes */
-  @keyframes glitch-skew {
-    0% {
-      transform: translate(0);
-      opacity: 1;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Random Internet Weirdness Compilation — Extended Edition</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background-color: #fffbe7;
+      color: #222;
+      padding: 2rem 4rem 2rem 5rem;
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.4;
+      position: relative;
+      transition: background-color 0.5s ease, color 0.5s ease;
     }
-    20% {
-      transform: translate(-5px, 3px) skew(-5deg);
-      opacity: 0.8;
+    body.dark-mode {
+      background-color: #121212;
+      color: #eee;
     }
-    40% {
-      transform: translate(5px, -3px) skew(5deg);
-      opacity: 0.6;
+    h1, h2, h3 {
+      text-align: center;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
     }
-    60% {
-      transform: translate(-3px, 2px) skew(-3deg);
-      opacity: 0.8;
+    .button {
+      display: inline-block;
+      background-color: #222;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin: 10px 0 15px 0;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
     }
-    80% {
-      transform: translate(3px, -2px) skew(3deg);
-      opacity: 1;
+    .button:hover {
+      background-color: #444;
     }
-    100% {
-      transform: translate(0);
-      opacity: 1;
+    body.dark-mode .button {
+      background-color: #eee;
+      color: #222;
     }
-  }
-  .glitch {
-    animation: glitch-skew 0.3s infinite;
-    filter: contrast(150%) saturate(180%);
-  }
-</style>
+    body.dark-mode .button:hover {
+      background-color: #bbb;
+    }
+    .hidden-message {
+      color: white;
+      user-select: text;
+      background-color: #222;
+      padding: 5px 8px;
+      border-radius: 4px;
+      margin: 15px 0;
+      display: inline-block;
+    }
+    body.dark-mode .hidden-message {
+      background-color: #444;
+      color: #ccc;
+    }
+    .ascii {
+      font-family: monospace;
+      white-space: pre;
+      color: #4caf50;
+      margin: 20px 0;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 6px;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body.dark-mode .ascii {
+      background: #222;
+      color: #80ff80;
+    }
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(30, 30, 30, 0.95);
+      padding: 20px;
+      border: 2px dashed #fff;
+      display: none;
+      z-index: 9999;
+      max-width: 300px;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 10px;
+      color: #fff;
+    }
+    footer {
+      margin-top: 80px;
+      font-size: 0.9rem;
+      color: #999;
+      text-align: center;
+      user-select: none;
+    }
+    body.dark-mode footer {
+      color: #777;
+    }
+    .page-break {
+      border-top: 3px dashed #222;
+      margin: 60px 0;
+    }
+    body.dark-mode .page-break {
+      border-top: 3px dashed #555;
+    }
+    .scroll-warning {
+      color: red;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      font-size: 1.2rem;
+    }
+    .select-all-reveal {
+      color: white;
+      background: black;
+      user-select: all;
+      padding: 5px;
+      margin-top: 25px;
+      display: inline-block;
+      border-radius: 4px;
+      cursor: text;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    body.dark-mode .select-all-reveal {
+      background: #333;
+      color: #ddd;
+    }
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 30px;
+      height: 100vh;
+      background-color: #ddd;
+      border-radius: 0 12px 12px 0;
+      overflow: hidden;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
+      z-index: 10000;
+      transition: background-color 0.5s ease;
+    }
+    body.dark-mode .progress-container {
+      background-color: #333;
+      box-shadow: inset 0 1px 3px rgba(255,255,255,.2);
+    }
+    .progress-bar {
+      height: 0%;
+      width: 100%;
+      background-color: #4caf50;
+      text-align: center;
+      color: white;
+      line-height: 25px;
+      font-weight: bold;
+      border-radius: 0 12px 12px 0;
+      transition: height 0.2s ease;
+      user-select: none;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 12px;
+      padding-top: 5px;
+      box-sizing: border-box;
+    }
+    body.dark-mode .progress-bar {
+      background-color: #80e27e;
+      color: #222;
+    }
+    #darkModeToggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: #222;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      z-index: 10001;
+      transition: background-color 0.3s ease;
+    }
+    #darkModeToggle:hover {
+      background-color: #444;
+    }
+    body.dark-mode #darkModeToggle {
+      background-color: #eee;
+      color: #222;
+    }
+    body.dark-mode #darkModeToggle:hover {
+      background-color: #bbb;
+    }
+    @keyframes glitch-skew {
+      0% { transform: translate(0); opacity: 1; }
+      20% { transform: translate(-5px, 3px) skew(-5deg); opacity: 0.8; }
+      40% { transform: translate(5px, -3px) skew(5deg); opacity: 0.6; }
+      60% { transform: translate(-3px, 2px) skew(-3deg); opacity: 0.8; }
+      80% { transform: translate(3px, -2px) skew(3deg); opacity: 1; }
+      100% { transform: translate(0); opacity: 1; }
+    }
+    .glitch {
+      animation: glitch-skew 0.3s infinite;
+      filter: contrast(150%) saturate(180%);
+    }
+  </style>
 </head>
 <body>
-<button id="darkModeToggle" aria-pressed="false" aria-label="Toggle Dark Mode">🌙 Dark Mode</button>
-<div class="progress-container" aria-label="Page scroll progress">
-  <div id="progressBar" class="progress-bar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">0%</div>
-</div>
-<h1>🌀 RANDOM INTERNET WEIRDNESS COMPILATION — ULTRA EXTENDED EDITION 🌀</h1>
-<p><strong>Greetings, digital wanderer.</strong> You have stumbled upon a page best viewed at 3 AM during a full moon with socks on your hands and toast in your pockets. Proceed accordingly.</p>
-<div class="ascii" id="loadingMessage">
-  [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 0% Loading Pure Chaos...
-</div>
-
-<!-- PAGE 1 -->
-<section id="page1">
-  <button class="button" onclick="showPopup('You have clicked a button. You are now part of the simulation.')">🔘 Click for Absolutely Nothing</button><br />
-  <button class="button" onclick="showPopup('Wisdom Level +1: “Never trust a code comment written in Comic Sans.”')">📜 Dump Some Wisdom</button><br />
-  <button class="button" onclick="showPopup('ERROR 500: Logic Overload. Unplug and replug your thoughts.')">⚠️ Simulated Error</button>
-  <p>Random Fact #174: Cows have best friends and get stressed when separated. Also, same.</p>
-  <div class="ascii">
-    Boot Log v3.14.159:<br />
-    - Verifying quantum particles... Disagreeing<br />
-    - Checking reality layers... Peeling back<br />
-    - Reinitializing cosmic spaghetti... Done<br />
-    - Summoning mild absurdity... ✔️
+  <button id="darkModeToggle">🌙 Dark Mode</button>
+  <div class="progress-container">
+    <div id="progressBar" class="progress-bar">0%</div>
   </div>
-  <h3>🤫 Hidden Message:</h3>
-  <p class="hidden-message">You’ve unlocked nothing. But hey, good effort!</p>
-  <h3>👁️‍🗨️ Warning:</h3>
-  <p class="scroll-warning">WARNING: Scrolling further may lead to unexpected philosophical discomfort or mild giggles.</p>
-  <div style="height: 400px;"></div>
-  <div class="ascii">
-    You have reached a checkpoint.<br />
-    Save your progress by screaming into a mason jar. 🫙<br />
-    Proceed with chaos.
+  <h1>🌀 RANDOM INTERNET WEIRDNESS COMPILATION — ULTRA EXTENDED EDITION 🌀</h1>
+  <p><strong>Greetings, digital wanderer.</strong> You have stumbled upon a page best viewed at 3 AM during a full moon with socks on your hands and toast in your pockets. Proceed accordingly.</p>
+  <div class="ascii" id="loadingMessage">
+    [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 0% Loading Pure Chaos...
   </div>
-</section>
 
-<div class="page-break"></div>
+  <!-- Page 1 -->
+  <section id="page1">
+    <button class="button" onclick="showPopup('You are now part of the simulation.')">🔘 Click for Absolutely Nothing</button><br />
+    <button class="button" onclick="showPopup('Wisdom Level +1: “Never trust a code comment written in Comic Sans.”')">📜 Dump Some Wisdom</button><br />
+    <button class="button" onclick="showPopup('ERROR 500: Logic Overload. Unplug and replug your thoughts.')">⚠️ Simulated Error</button>
+    <p>Random Fact #174: Cows have best friends and get stressed when separated. Also, same.</p>
+    <div class="ascii"> Boot Log v3.14.159:<br /> - Verifying quantum particles... Disagreeing<br /> - Checking reality layers... Peeling back<br /> - Reinitializing cosmic spaghetti... Done<br /> - Summoning mild absurdity... ✔️ </div>
+    <h3>🤫 Hidden Message:</h3>
+    <p class="hidden-message">You’ve unlocked nothing. But hey, good effort!</p>
+    <h3>👁️‍🗨️ Warning:</h3>
+    <p class="scroll-warning">WARNING: Scrolling further may lead to unexpected philosophical discomfort or mild giggles.</p>
+  </section>
 
-<!-- PAGE 3 -->
-<section id="page3">
-  <h2>Page 3: The Random Quote Machine 🎰</h2>
-  <button class="button" onclick="showPopup(randomQuote())">🎲 Dispense Internet Wisdom</button>
-  <p>Quotes generated by a rogue AI trapped in a vending machine in 2008:</p>
-  <ul>
-    <li>“Why write clean code when you can write mysterious?”</li>
-    <li>“404: Motivation Not Found”</li>
-    <li>“Ctrl + Alt + Del your problems.”</li>
-    <li>“There’s no place like 127.0.0.1”</li>
-    <li>“Keep calm and blame the compiler.”</li>
-    <li>“Debugging is like being the detective in a crime movie where you are also the murderer.”</li>
-  </ul>
-  <p>Press the button and receive your daily dose of chaos.</p>
-</section>
+  <div class="page-break"></div>
 
-<div class="page-break"></div>
+  <!-- Page 3 -->
+  <section id="page3">
+    <h2>Page 3: The Random Quote Machine 🎰</h2>
+    <button class="button" onclick="showPopup(randomQuote())">🎲 Dispense Internet Wisdom</button>
+  </section>
 
-<!-- PAGE 6 -->
-<section id="page6">
-  <h2>Page 6: The ASCII Art Museum 🎨</h2>
-  <pre class="ascii">
-  ,_     _
-  |\_,-~/
-  / _  _ |    ,--.
- (  @  @ )   / ,-'
-  \  _T_/-._( (
-  /         `. \
- |         _  \ |
-  \ \ ,  /      |
-   || |-_\__   /
-  ((_/`(____,-'
-  </pre>
-  <p>Art is subjective. Some see a dog. Others see the internet's soul.</p>
-</section>
+  <div class="page-break"></div>
 
-<div class="page-break"></div>
+  <!-- Page 6 -->
+  <section id="page6">
+    <h2>Page 6: ASCII Art Gallery 🖼️</h2>
+    <pre class="ascii">(\_/) ( •_•) / >🍪 — Here, have a cookie! (not really)</pre>
+    <pre class="ascii">ʕ•ᴥ•ʔ — Cute Bear says hi!</pre>
+    <pre class="ascii">¯\_(ツ)_/¯ — Classic Shrug Emoticon</pre>
+  </section>
 
-<!-- PAGE 16 -->
-<section id="page16">
-  <h2>Page 16: The Conspiracy Corner 🕵️‍♂️</h2>
-  <p>All conspiracy theories on this page are 100% made up for entertainment.</p>
-  <button class="button" onclick="showPopup('Aliens built the pyramids, but only because they liked the view.')">👽 Pyramid Builders</button>
-  <button class="button" onclick="showPopup('The moon landing was real, but Neil Armstrong forgot his keys on the moon.')">🌕 Moon Landing</button>
-  <button class="button" onclick="showPopup('Bigfoot prefers almond milk over regular milk.')">🦶 Bigfoot</button>
-  <p>Remember, keep your tin foil hats tight!</p>
-</section>
+  <div class="page-break"></div>
 
-<div class="page-break"></div>
+  <!-- Page 16 -->
+  <section id="page16">
+    <h2>Page 16: Hidden Easter Eggs 🥚</h2>
+    <p>Try selecting the text below:</p>
+    <p class="select-all-reveal">You found me! Now, tell no one or everyone.</p>
+  </section>
 
-<!-- PAGE 18 -->
-<section id="page18">
-  <h2>Page 18: The Ultimate Easter Egg 🥚</h2>
-  <p>Congratulations! You have found the ultimate Easter egg. Share your prize with your nearest digital friend.</p>
-  <button class="button" onclick="showPopup('You have earned the secret title: Master of Weirdness 🏆')">Claim Your Prize</button>
-  <div class="ascii glitch">
-    __     __         _                 _ 
-    \ \   / /__ _ __ | |__   ___  _ __ | |
-     \ \ / / _ \ '_ \| '_ \ / _ \| '_ \| |
-      \ V /  __/ | | | | | | (_) | | | |_|
-       \_/ \___|_| |_|_| |_|\___/|_| |_(_)
-  </div>
-  <p>May your internet be forever strange.</p>
-</section>
+  <div class="page-break"></div>
 
-<div class="page-break"></div>
+  <!-- Page 18 -->
+  <section id="page18">
+    <h2>Page 18: Glitch Button Zone ⚡</h2>
+    <button id="glitchBtn" class="button">MAKE THIS PAGE GLITCH</button>
+  </section>
 
-<footer>
-  — created by <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">YourName</a> —
-</footer>
+  <footer>
+    Created by ChatGPT. Prompted by Anno Giftson. Website Made with Github.
+  </footer>
 
-<div id="popup" class="popup" role="alert" aria-live="assertive"></div>
+  <div id="popup" class="popup" role="alert" aria-live="assertive"></div>
 
-<script>
-  // Dark Mode Toggle
-  const darkModeToggle = document.getElementById('darkModeToggle');
-  darkModeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    let isDark = document.body.classList.contains('dark-mode');
-    darkModeToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
-    darkModeToggle.setAttribute('aria-pressed', isDark);
-  });
+  <script>
+    // Progress bar logic
+    const loadingMessage = document.getElementById('loadingMessage');
+    const progressBar = document.getElementById('progressBar');
+    let loadingPercent = 0;
+    function updateProgress() {
+      loadingPercent++;
+      if (loadingPercent <= 25) {
+        loadingMessage.textContent = `[${'░'.repeat(loadingPercent)}${' '.repeat(25 - loadingPercent)}] ${loadingPercent * 4}% Loading Pure Chaos...`;
+        progressBar.style.height = loadingPercent * 4 + '%';
+        progressBar.textContent = loadingPercent * 4 + '%';
+        progressBar.setAttribute('aria-valuenow', loadingPercent * 4);
+        setTimeout(updateProgress, 60);
+      } else {
+        loadingMessage.textContent = 'Loading Complete!';
+      }
+    }
+    updateProgress();
 
-  // Scroll Progress Bar
-  const progressBar = document.getElementById('progressBar');
-  window.addEventListener('scroll', () => {
-    let scrollTop = window.scrollY;
-    let docHeight = document.body.scrollHeight - window.innerHeight;
-    let scrollPercent = (scrollTop / docHeight) * 100;
-    progressBar.style.height = scrollPercent + '%';
-    progressBar.textContent = Math.round(scrollPercent) + '%';
-    progressBar.setAttribute('aria-valuenow', Math.round(scrollPercent));
-  });
+    // Popup
+    const popup = document.getElementById('popup');
+    function showPopup(message) {
+      popup.textContent = message;
+      popup.style.display = 'block';
+      setTimeout(() => { popup.style.display = 'none'; }, 3000);
+    }
 
-  // Popup functionality
-  const popup = document.getElementById('popup');
-  function showPopup(message) {
-    popup.textContent = message;
-    popup.style.display = 'block';
-    setTimeout(() => {
-      popup.style.display = 'none';
-    }, 2500);
-  }
-
-  // Random Quote Generator for Page 3 button
-  function randomQuote() {
+    // Quotes for Page 3
     const quotes = [
       "Why write clean code when you can write mysterious?",
       "404: Motivation Not Found",
       "Ctrl + Alt + Del your problems.",
-      "There's no place like 127.0.0.1",
+      "There’s no place like 127.0.0.1",
       "Keep calm and blame the compiler.",
       "Debugging is like being the detective in a crime movie where you are also the murderer."
     ];
-    return quotes[Math.floor(Math.random() * quotes.length)];
-  }
-
-  // Loading animation for the loadingMessage ASCII block
-  let loadProgress = 0;
-  const loadingMessage = document.getElementById('loadingMessage');
-  const loadInterval = setInterval(() => {
-    loadProgress += Math.floor(Math.random() * 10) + 5; // increment by random 5-15%
-    if (loadProgress >= 100) {
-      loadProgress = 100;
-      clearInterval(loadInterval);
-      loadingMessage.textContent = "[████████████████████████████████████] 100% Pure Chaos Loaded!";
-    } else {
-      let blocks = Math.floor(loadProgress / 4);
-      let bar = '[' + '█'.repeat(blocks) + '░'.repeat(25 - blocks) + '] ' + loadProgress + '% Loading Pure Chaos...';
-      loadingMessage.textContent = bar;
+    function randomQuote() {
+      return quotes[Math.floor(Math.random() * quotes.length)];
     }
-  }, 400);
-</script>
+
+    // Dark mode toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      darkModeToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+    });
+
+    // Glitch button
+    const glitchBtn = document.getElementById('glitchBtn');
+    glitchBtn.addEventListener('click', () => {
+      document.body.classList.add('glitch');
+      setTimeout(() => {
+        document.body.classList.remove('glitch');
+      }, 3000);
+    });
+  </script>
 </body>
 </html>
+
 
 
 
