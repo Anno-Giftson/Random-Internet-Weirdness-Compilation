@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,16 +7,16 @@
   <style>
     /* Base Styles */
     body {
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background-color: #121212;
-      color: #eee;
       margin: 0;
-      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #1a1a1a;
+      color: #eee;
       user-select: none;
     }
 
+    /* Container */
     .container {
-      max-width: 700px;
+      max-width: 800px;
       margin: 40px auto;
       padding: 0 20px;
     }
@@ -25,37 +25,35 @@
     nav {
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 12px;
       margin-bottom: 40px;
     }
     nav button {
-      background: linear-gradient(45deg, #ff00cc, #3333ff);
+      background-color: #3a0ca3;
       border: none;
       border-radius: 12px;
       color: #fff;
-      padding: 12px 20px;
-      font-weight: bold;
+      padding: 12px 22px;
+      font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(255,0,204,0.7);
-      transition: transform 0.2s, box-shadow 0.2s;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
+      transition: background-color 0.3s ease;
+      font-family: 'Arial Black', Arial, sans-serif;
+      box-shadow: 0 0 10px #720026;
     }
     nav button:hover,
     nav button.active {
-      transform: scale(1.1);
-      box-shadow: 0 6px 15px rgba(255,0,204,1);
-      background: linear-gradient(45deg, #ff66cc, #6666ff);
-      color: #fff;
+      background-color: #720026;
+      box-shadow: 0 0 20px #ff005c;
     }
 
     /* Pages */
     section.page {
       display: none;
-      animation: fadeIn 0.5s ease forwards;
-      background: #222;
-      border-radius: 16px;
+      background-color: #292929;
+      border-radius: 15px;
       padding: 30px;
-      box-shadow: 0 0 30px #ff00ccaa;
+      box-shadow: 0 0 25px #720026;
+      animation: fadeIn 0.5s ease forwards;
     }
     section.page.active {
       display: block;
@@ -69,36 +67,37 @@
     /* Progress Bar Container */
     .progress-container {
       width: 100%;
-      background-color: #333;
-      height: 10px;
-      border-radius: 5px;
+      height: 12px;
+      background-color: #444;
+      border-radius: 6px;
       margin-bottom: 40px;
       overflow: hidden;
-      box-shadow: 0 0 12px #ff00ccaa inset;
+      box-shadow: inset 0 0 10px #720026;
     }
 
     /* Progress Bar */
     .progress-bar {
-      height: 10px;
-      background: linear-gradient(90deg, #ff00cc, #3333ff);
+      height: 12px;
       width: 0%;
+      background: linear-gradient(90deg, #720026, #ff005c);
       transition: width 0.4s ease;
-      box-shadow: 0 0 15px #ff00cc;
+      box-shadow: 0 0 15px #ff005c;
     }
 
     /* Popup Overlay */
     .overlay {
       position: fixed;
       top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background-color: rgba(0, 0, 0, 0.9); /* darker overlay */
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.85); /* Darker overlay */
       display: flex;
       justify-content: center;
       align-items: center;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
-      z-index: 10000;
+      z-index: 9999;
     }
     .overlay.active {
       opacity: 1;
@@ -107,16 +106,18 @@
 
     /* Popup Content */
     .popup-content {
-      background-color: #3a0078;
-      color: #ff99ff;
+      background-color: #3a0ca3;
+      color: #ffe6ff; /* lighter, easier to read */
       padding: 40px 50px;
-      border-radius: 30px;
+      border-radius: 25px;
       text-align: center;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      box-shadow: 0 0 40px #ff33cc;
-      max-width: 400px;
+      box-shadow: 0 0 40px #ff005c;
+      max-width: 420px;
       position: relative;
+      font-weight: 700;
+      font-family: 'Arial Black', Arial, sans-serif;
       font-size: 18px;
+      user-select: none;
     }
 
     /* Close Button */
@@ -127,32 +128,33 @@
       background: none;
       border: none;
       font-size: 28px;
-      color: #ff99ff;
+      color: #ffe6ff;
       cursor: pointer;
-      font-weight: bold;
-      transition: color 0.3s ease;
+      font-weight: 700;
       user-select: none;
+      transition: color 0.3s ease;
     }
     .popup-close:hover {
-      color: #ff33cc;
+      color: #ff005c;
     }
 
     /* Popup Button */
     .popup-btn {
-      margin-top: 20px;
-      background: #ff00cc;
+      margin-top: 25px;
+      background-color: #720026;
       border: none;
-      padding: 12px 25px;
+      padding: 12px 28px;
       border-radius: 20px;
-      color: #fff;
+      color: #ffe6ff;
       cursor: pointer;
-      font-weight: bold;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      box-shadow: 0 0 12px #ff00cc;
-      transition: background 0.3s ease;
+      font-weight: 700;
+      font-family: 'Arial Black', Arial, sans-serif;
+      box-shadow: 0 0 15px #ff005c;
+      transition: background-color 0.3s ease;
+      user-select: none;
     }
     .popup-btn:hover {
-      background: #ff33cc;
+      background-color: #ff005c;
     }
 
     /* Footer */
@@ -161,8 +163,8 @@
       margin: 60px 0 20px 0;
       color: #888;
       font-size: 14px;
+      font-family: 'Arial', sans-serif;
       user-select: none;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
     }
   </style>
 </head>
@@ -173,10 +175,10 @@
     <!-- Navigation -->
     <nav>
       <button class="nav-btn active" data-page="home">Home</button>
-      <button class="nav-btn" data-page="funky-facts">Funky Facts</button>
-      <button class="nav-btn" data-page="weird-services">Weird Services</button>
-      <button class="nav-btn" data-page="contact-alien">Contact the Alien</button>
-      <button class="nav-btn" data-page="faq-bizarre">FAQ for the Bizarre</button>
+      <button class="nav-btn" data-page="about">About</button>
+      <button class="nav-btn" data-page="projects">Projects</button>
+      <button class="nav-btn" data-page="gallery">Gallery</button>
+      <button class="nav-btn" data-page="contact">Contact</button>
     </nav>
 
     <!-- Progress Bar -->
@@ -187,47 +189,37 @@
     <!-- Pages -->
 
     <section id="home" class="page active">
-      <h1>Welcome to the Weird Side!</h1>
-      <p>You're here! Brace yourself for strange vibes and silly fun.</p>
-      <button class="popup-btn">Reveal a secret</button>
+      <h1>Welcome to Our Funny & Weird Website</h1>
+      <p>Step inside and explore the quirks and the fun we offer.</p>
+      <button class="popup-btn">Click for a surprise!</button>
     </section>
 
-    <section id="funky-facts" class="page">
-      <h1>Funky Facts</h1>
+    <section id="about" class="page">
+      <h1>About Us</h1>
+      <p>We are a bunch of quirky developers who love adding weirdness to the web. Expect the unexpected here!</p>
+      <button class="popup-btn">Know more secrets</button>
+    </section>
+
+    <section id="projects" class="page">
+      <h1>Our Projects</h1>
       <ul>
-        <li>Octopuses have three hearts. Weird flex, but okay.</li>
-        <li>Bananas are berries, but strawberries aren't. Biology hates us.</li>
-        <li>There's a species of jellyfish that can live forever. Immortal jelly vibes.</li>
+        <li>Project Weirdify: Making the world strange, one line of code at a time.</li>
+        <li>AlienChat: A chat app for extraterrestrials (not verified yet).</li>
+        <li>TimeTwist: Slightly bending the rules of time... in code.</li>
       </ul>
-      <button class="popup-btn">Get a funky fact</button>
+      <button class="popup-btn">View project surprise</button>
     </section>
 
-    <section id="weird-services" class="page">
-      <h1>Weird Services</h1>
-      <ul>
-        <li>Alien translation (we might get it wrong, but hey, effort!)</li>
-        <li>Custom moon naming (because why not?)</li>
-        <li>Time travel consulting (preliminary only, results may vary)</li>
-      </ul>
-      <button class="popup-btn">Book a weird service</button>
+    <section id="gallery" class="page">
+      <h1>Gallery</h1>
+      <p>Here’s a collection of strange and funny pictures that inspired us.</p>
+      <button class="popup-btn">Reveal a weird pic</button>
     </section>
 
-    <section id="contact-alien" class="page">
-      <h1>Contact the Alien</h1>
-      <p>If you think you've seen a UFO or just want to chat with extraterrestrials, drop us a message!</p>
-      <button class="popup-btn">Send message to space</button>
-    </section>
-
-    <section id="faq-bizarre" class="page">
-      <h1>FAQ for the Bizarre</h1>
-      <dl>
-        <dt>Q: Can I join the weird club?</dt>
-        <dd>A: Absolutely, wear your quirkiest socks!</dd>
-
-        <dt>Q: What’s the meaning of life here?</dt>
-        <dd>A: To laugh, weird out, and eat ice cream.</dd>
-      </dl>
-      <button class="popup-btn">More FAQs</button>
+    <section id="contact" class="page">
+      <h1>Contact Us</h1>
+      <p>Send us your weirdest ideas or just say hi!</p>
+      <button class="popup-btn">Send a cosmic message</button>
     </section>
 
   </div>
@@ -236,7 +228,7 @@
   <div class="overlay" id="popupOverlay">
     <div class="popup-content">
       <button class="popup-close" id="popupClose">&times;</button>
-      <p id="popupText">Here’s something strange for you!</p>
+      <p id="popupText">Surprise!</p>
     </div>
   </div>
 
@@ -250,52 +242,52 @@
     const pages = document.querySelectorAll('section.page');
     const progressBar = document.querySelector('.progress-bar');
 
-    const pageOrder = ['home', 'funky-facts', 'weird-services', 'contact-alien', 'faq-bizarre'];
+    const pageOrder = ['home', 'about', 'projects', 'gallery', 'contact'];
 
     const popupOverlay = document.getElementById('popupOverlay');
     const popupCloseBtn = document.getElementById('popupClose');
     const popupButtons = document.querySelectorAll('.popup-btn');
     const popupText = document.getElementById('popupText');
 
-    // Popups content for each button - random-ish messages
+    // Array of popup messages
     const popupMessages = [
-      "Did you know? Sloths can hold their breath longer than dolphins!",
-      "Warning: Alien spacecraft spotted nearby... or maybe not.",
-      "Your socks just became 10% funkier. You're welcome.",
-      "Weirdness level: OVER 9000!",
-      "This popup contains 0 calories and 100% weirdness.",
-      "You found the secret weird handshake! 🖖",
-      "Sending good vibes to your pet rock. Stay strong, buddy!",
-      "If you can read this, you’re officially part of the club.",
-      "Aliens said hi. Or was it just the wind?",
-      "Keep smiling! It's contagious (in a good way)."
+      "Here's a weird secret just for you!",
+      "Surprise! You unlocked a cosmic joke.",
+      "Beware! The internet gremlins are watching.",
+      "Your weirdness level just increased by 42.",
+      "Aliens approve this message.",
+      "Keep calm and embrace the strange.",
+      "Did you know? Penguins propose with pebbles!",
+      "404: Normality not found.",
+      "This popup is as strange as you are.",
+      "You found the secret to eternal weirdness!"
     ];
 
-    // Show page and update progress bar
+    // Show the page & update progress bar
     function showPage(pageId) {
-      pages.forEach(p => {
-        p.classList.toggle('active', p.id === pageId);
+      pages.forEach(page => {
+        page.classList.toggle('active', page.id === pageId);
       });
       navButtons.forEach(btn => {
         btn.classList.toggle('active', btn.dataset.page === pageId);
       });
       const index = pageOrder.indexOf(pageId);
-      const progressPercent = ((index + 1) / pageOrder.length) * 100;
-      progressBar.style.width = progressPercent + '%';
+      const percent = ((index + 1) / pageOrder.length) * 100;
+      progressBar.style.width = percent + '%';
     }
 
-    // Navigation clicks
+    // Navigation buttons click event
     navButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         showPage(btn.dataset.page);
       });
     });
 
-    // Popup open with random message
+    // Popup buttons click event
     popupButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        const randomMsg = popupMessages[Math.floor(Math.random() * popupMessages.length)];
-        popupText.textContent = randomMsg;
+        const randomIndex = Math.floor(Math.random() * popupMessages.length);
+        popupText.textContent = popupMessages[randomIndex];
         popupOverlay.classList.add('active');
       });
     });
@@ -305,19 +297,20 @@
       popupOverlay.classList.remove('active');
     });
 
-    // Close popup clicking outside content
+    // Close popup if clicking outside content
     popupOverlay.addEventListener('click', e => {
-      if(e.target === popupOverlay){
+      if (e.target === popupOverlay) {
         popupOverlay.classList.remove('active');
       }
     });
 
-    // Init
+    // Initialize page
     showPage('home');
   </script>
 
 </body>
 </html>
+
 
 
 
