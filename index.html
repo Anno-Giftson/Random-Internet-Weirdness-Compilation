@@ -233,36 +233,36 @@
 
   <div class="page-break"></div>
 
-  <!-- Page 3 -->
-  <section id="page3">
-    <h2>Page 3: The Random Quote Machine 🎰</h2>
+  <!-- Page 2 -->
+  <section id="page2">
+    <h2>Page 2: The Random Quote Machine 🎰</h2>
     <button class="button" onclick="showPopup(randomQuote())">🎲 Dispense Internet Wisdom</button>
   </section>
 
   <div class="page-break"></div>
 
-  <!-- Page 6 -->
-  <section id="page6">
-    <h2>Page 6: ASCII Art Gallery 🖼️</h2>
-    <pre class="ascii">(\_/) ( •_•) / >🍪 — Here, have a cookie! (not really)</pre>
+  <!-- Page 3 -->
+  <section id="page3">
+    <h2>Page 3: ASCII Art Gallery 🖼️</h2>
+    <pre class="ascii">(\_/) ( •_•) / &gt;🍪 — Here, have a cookie! (not really)</pre>
     <pre class="ascii">ʕ•ᴥ•ʔ — Cute Bear says hi!</pre>
     <pre class="ascii">¯\_(ツ)_/¯ — Classic Shrug Emoticon</pre>
   </section>
 
   <div class="page-break"></div>
 
-  <!-- Page 16 -->
-  <section id="page16">
-    <h2>Page 16: Hidden Easter Eggs 🥚</h2>
+  <!-- Page 4 -->
+  <section id="page4">
+    <h2>Page 4: Hidden Easter Eggs 🥚</h2>
     <p>Try selecting the text below:</p>
     <p class="select-all-reveal">You found me! Now, tell no one or everyone.</p>
   </section>
 
   <div class="page-break"></div>
 
-  <!-- Page 18 -->
-  <section id="page18">
-    <h2>Page 18: Glitch Button Zone ⚡</h2>
+  <!-- Page 5 -->
+  <section id="page5">
+    <h2>Page 5: Glitch Button Zone ⚡</h2>
     <button id="glitchBtn" class="button">MAKE THIS PAGE GLITCH</button>
   </section>
 
@@ -291,15 +291,20 @@
     }
     updateProgress();
 
-    // Popup
+    // Popup logic - keep popup visible for at least 3 seconds
     const popup = document.getElementById('popup');
+    let popupTimeout;
+
     function showPopup(message) {
+      clearTimeout(popupTimeout);
       popup.textContent = message;
       popup.style.display = 'block';
-      setTimeout(() => { popup.style.display = 'none'; }, 3000);
+      popupTimeout = setTimeout(() => {
+        popup.style.display = 'none';
+      }, 3000); // 3 seconds
     }
 
-    // Quotes for Page 3
+    // Quotes for Page 2
     const quotes = [
       "Why write clean code when you can write mysterious?",
       "404: Motivation Not Found",
@@ -331,6 +336,7 @@
   </script>
 </body>
 </html>
+
 
 
 
